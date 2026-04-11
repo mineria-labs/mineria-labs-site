@@ -1,9 +1,9 @@
 /**
  * Cloudflare Pages Function — お問い合わせフォームのメール送信ハンドラ
  *
- * 必要なダッシュボード設定（Workers & Pages → mineria-labs-site → バインディング → メールサービス）:
- *   変数名     : SEND_EMAIL
- *   送信先     : support@mineria-labs.com
+ * 必要なダッシュボード設定（Workers & Pages → mineria-labs-site → 設定 → 変数とシークレット）:
+ *   変数名 : RESEND_API_KEY
+ *   値     : Resend で発行した APIキー（re_xxxxxxxxxx）
  */
 export async function onRequestPost(context) {
   const { request, env } = context;
@@ -29,9 +29,9 @@ export async function onRequestPost(context) {
   category = (category || "その他").trim();
   message  = (message  || "").trim();
 
-  // ── スパムフィルタ（ハニーポット） ──
+  // ── スパムフィルタ ──
   if (honeypot) {
-    return jsonOk(); // スパムは黙って成功を返す
+    return jsonOk();
   }
 
   // ── バリデーション ──
@@ -42,7 +42,7 @@ export async function onRequestPost(context) {
     return jsonError("メールアドレスの形式が正しくありません", 400);
   }
 
-  // ── メール送信 ──
+  // ── Resend API でメール送信 ──
   const subject = `[Mineria お問い合わせ] ${category} — ${name}`;
   const body = [
     `お名前　　　　　: ${name}`,
@@ -55,17 +55,31 @@ export async function onRequestPost(context) {
   ].join("\n");
 
   try {
-    await env.SEND_EMAIL.send({
-      from: "noreply@mineria-labs.com",
-      to:   "support@mineria-labs.com",
-      subject,
-      text: body,
-      replyTo: email,
+    const res = await fetch("https://api.resend.com/emails", {
+      method: "POST",
+      headers: {
+        "Authorization": `Bearer ${env.RESEND_API_KEY}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        from:     "Mineria <noreply@mineria-labs.com>",
+        to:       ["support@mineria-labs.com"],
+        reply_to: email,
+        subject,
+        text:     body,
+      }),
     });
+
+    if (!res.ok) {
+      const err = await res.text();
+      console.error("Resend error:", res.status, err);
+      return jsonError("メール送信に失敗しました", 500);
+    }
+
     return jsonOk();
   } catch (err) {
-    console.error("Email send error:", err);
-    return jsonError("メール送信に失敗しました", 500);
+    console.error("Fetch error:", err);
+    return jsonError("ネットワークエラーが発生しました", 500);
   }
 }
 
@@ -73,7 +87,6 @@ export async function onRequestGet() {
   return new Response("Method Not Allowed", { status: 405 });
 }
 
-// ── ユーティリティ ──
 function jsonOk() {
   return Response.json({ ok: true });
 }
