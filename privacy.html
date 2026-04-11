@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>プライバシーポリシー — Mineria</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&family=Cormorant+Garamond:wght@300;400;600&display=swap"
+    rel="stylesheet"
+  />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:       #0b0b12;
+      --bg2:      #13131f;
+      --gold:     #c9a84c;
+      --teal:     #3ec9a7;
+      --text:     #ede9e4;
+      --text-dim: #9b9590;
+      --border:   rgba(201,168,76,0.18);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Noto Sans JP', sans-serif;
+      font-weight: 400;
+      line-height: 1.9;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { color: var(--gold); }
+    a:hover { color: #e8d08a; }
+
+    nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 18px 40px;
+      background: var(--bg2);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.4rem;
+      font-weight: 600;
+      color: var(--gold);
+      text-decoration: none;
+    }
+
+    .nav-back {
+      font-size: 0.82rem;
+      color: var(--text-dim);
+      transition: color 0.2s;
+    }
+
+    .nav-back:hover { color: var(--gold); }
+
+    main {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 72px 24px 96px;
+    }
+
+    .doc-header {
+      margin-bottom: 56px;
+      padding-bottom: 32px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .doc-label {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--teal);
+      margin-bottom: 12px;
+    }
+
+    .doc-header h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.6rem;
+      font-weight: 300;
+      color: var(--text);
+      margin-bottom: 12px;
+    }
+
+    .doc-date {
+      font-size: 0.85rem;
+      color: var(--text-dim);
+      font-weight: 300;
+    }
+
+    h2 {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--text);
+      margin: 48px 0 16px;
+      padding-left: 14px;
+      border-left: 3px solid var(--gold);
+    }
+
+    h3 {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--text);
+      margin: 28px 0 10px;
+    }
+
+    p {
+      font-size: 0.92rem;
+      color: var(--text-dim);
+      font-weight: 300;
+      margin-bottom: 14px;
+    }
+
+    ul {
+      list-style: none;
+      margin: 12px 0 20px;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    ul li {
+      font-size: 0.92rem;
+      color: var(--text-dim);
+      font-weight: 300;
+      padding-left: 20px;
+      position: relative;
+    }
+
+    ul li::before {
+      content: '·';
+      position: absolute;
+      left: 6px;
+      color: var(--gold);
+      font-size: 1.2rem;
+      line-height: 1.4;
+    }
+
+    .info-box {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 24px;
+      margin: 24px 0;
+    }
+
+    .info-box p { margin-bottom: 6px; }
+    .info-box p:last-child { margin-bottom: 0; }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 16px 0 24px;
+    }
+
+    th, td {
+      padding: 12px 16px;
+      font-size: 0.88rem;
+      text-align: left;
+      border-bottom: 1px solid var(--border);
+    }
+
+    th {
+      color: var(--text-dim);
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      background: var(--bg2);
+    }
+
+    td { color: var(--text-dim); font-weight: 300; }
+
+    footer {
+      background: var(--bg2);
+      border-top: 1px solid var(--border);
+      padding: 32px 24px;
+      text-align: center;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 24px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-bottom: 16px;
+    }
+
+    .footer-links a {
+      font-size: 0.82rem;
+      color: var(--text-dim);
+    }
+
+    .footer-copy {
+      font-size: 0.78rem;
+      color: var(--text-dim);
+      font-weight: 300;
+    }
+
+    @media (max-width: 640px) {
+      nav { padding: 14px 20px; }
+      main { padding: 48px 20px 72px; }
+      .doc-header h1 { font-size: 2rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="index.html" class="nav-logo">Mineria</a>
+    <a href="index.html" class="nav-back">← トップに戻る</a>
+  </nav>
+
+  <main>
+    <div class="doc-header">
+      <p class="doc-label">Legal</p>
+      <h1>プライバシーポリシー</h1>
+      <p class="doc-date">制定日：2026年4月1日　　最終更新日：2026年4月11日</p>
+    </div>
+
+    <p>
+      Mineria Labs（以下「当社」）は、モバイルアプリケーション「Mineria」（以下「本アプリ」）において、
+      ユーザーの個人情報及びプライバシーの保護を重要と考えており、
+      以下のプライバシーポリシー（以下「本ポリシー」）に従い、個人情報を適切に取り扱います。
+    </p>
+
+    <h2>第1条　収集する情報</h2>
+
+    <h3>1-1. アカウント登録情報</h3>
+    <p>アカウント登録時に以下の情報を収集します。</p>
+    <ul>
+      <li>メールアドレス（メール認証の場合）</li>
+      <li>Google アカウントのプロフィール情報（Google 認証の場合）</li>
+      <li>ニックネーム（任意入力）</li>
+      <li>プロフィール画像（任意アップロード）</li>
+    </ul>
+
+    <h3>1-2. コレクションデータ</h3>
+    <p>本アプリの利用中に、ユーザーが登録する以下のデータを収集・保存します。</p>
+    <ul>
+      <li>標本写真・動画ファイル</li>
+      <li>鉱物名・産地・物理データ（硬度・サイズ・重量等）</li>
+      <li>購入価格・入手情報（非公開フィールド、本人のみ参照可）</li>
+      <li>公開メモ・プライベートメモ</li>
+    </ul>
+
+    <h3>1-3. 利用ログ・技術情報</h3>
+    <ul>
+      <li>AI識別機能の利用回数・利用日時</li>
+      <li>アプリのクラッシュログ・エラーログ（Firebase Crashlytics）</li>
+      <li>デバイス識別子（ゲストモードにおけるAI利用回数管理のみに使用）</li>
+    </ul>
+
+    <h2>第2条　情報の利用目的</h2>
+    <p>収集した情報は以下の目的でのみ利用します。</p>
+    <ul>
+      <li>本アプリのサービス提供・運営</li>
+      <li>ユーザーアカウントの管理・認証</li>
+      <li>AI自動識別機能の提供</li>
+      <li>コレクションデータのクラウドバックアップ（プレミアムプランのみ）</li>
+      <li>サービスの改善・新機能の開発</li>
+      <li>不正利用の検知・防止</li>
+      <li>お問い合わせへの対応</li>
+      <li>法令上の義務への対応</li>
+    </ul>
+
+    <h2>第3条　第三者への提供</h2>
+    <p>
+      当社は、以下の場合を除き、ユーザーの個人情報を第三者に提供・開示しません。
+    </p>
+    <ul>
+      <li>ユーザーご本人の同意がある場合</li>
+      <li>法令に基づく場合（裁判所・行政機関の命令等）</li>
+      <li>人の生命・身体・財産の保護のために必要な場合</li>
+    </ul>
+
+    <h2>第4条　利用する外部サービス</h2>
+    <p>本アプリは以下の外部サービスを利用しており、各サービスのプライバシーポリシーが適用される場合があります。</p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>サービス</th>
+          <th>用途</th>
+          <th>提供元</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Firebase Authentication</td>
+          <td>ユーザー認証</td>
+          <td>Google LLC</td>
+        </tr>
+        <tr>
+          <td>Cloud Firestore</td>
+          <td>データ保存</td>
+          <td>Google LLC</td>
+        </tr>
+        <tr>
+          <td>Firebase Storage</td>
+          <td>写真・動画ファイルの保存</td>
+          <td>Google LLC</td>
+        </tr>
+        <tr>
+          <td>Firebase Crashlytics</td>
+          <td>クラッシュレポート収集</td>
+          <td>Google LLC</td>
+        </tr>
+        <tr>
+          <td>Gemini API（Vertex AI）</td>
+          <td>AI鉱物識別</td>
+          <td>Google LLC</td>
+        </tr>
+        <tr>
+          <td>Google Sign-In</td>
+          <td>Google認証</td>
+          <td>Google LLC</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p>
+      Google のプライバシーポリシーは
+      <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">https://policies.google.com/privacy</a>
+      をご参照ください。
+    </p>
+
+    <h2>第5条　非公開フィールドの取り扱い</h2>
+    <p>
+      標本データのうち以下のフィールドは「非公開フィールド」として扱われ、
+      ユーザー本人以外には一切表示・送信されません。
+    </p>
+    <ul>
+      <li>購入価格・入手先・入手日</li>
+      <li>売却価格・手放した先・手放した日</li>
+      <li>プライベートメモ</li>
+      <li>管理番号</li>
+    </ul>
+    <p>
+      標本を「公開」設定にした場合も、上記の非公開フィールドは他ユーザーには送信されません。
+    </p>
+
+    <h2>第6条　いいね・フォロー情報の取り扱い</h2>
+    <p>
+      いいね・フォロー機能に関する情報（誰がいいねしたか、誰がフォローしたか等）は
+      内部管理目的でのみ保存され、他のユーザーのUIには一切表示されません。
+    </p>
+
+    <h2>第7条　データの保存期間</h2>
+    <ul>
+      <li>アカウントデータ・標本データ：アカウント削除まで保持</li>
+      <li>ゲスト（匿名認証）データ：アプリ削除・機種変更により失われる場合があります</li>
+      <li>お問い合わせ記録：返信完了後3年間保持</li>
+    </ul>
+
+    <h2>第8条　データの削除</h2>
+    <p>
+      ユーザーは本アプリ内の「アカウント削除」機能から、いつでも自身のアカウントおよびすべての関連データを削除できます。
+      削除されたデータは原則として復元できません。
+    </p>
+    <p>
+      データ削除に関するお問い合わせは
+      <a href="mailto:support@mineria-labs.com">support@mineria-labs.com</a> までご連絡ください。
+    </p>
+
+    <h2>第9条　お子様のプライバシー（COPPA）</h2>
+    <p>
+      本アプリは13歳未満の方を対象としておりません。
+      13歳未満の方の個人情報を意図して収集することはありません。
+      13歳未満のユーザーからの個人情報収集が判明した場合は、速やかに削除します。
+    </p>
+
+    <h2>第10条　セキュリティ</h2>
+    <p>
+      当社は、収集した個人情報を適切な技術的・組織的措置によって保護します。
+      ただし、インターネット上でのデータ送受信の完全な安全性を保証するものではありません。
+    </p>
+
+    <h2>第11条　ポリシーの変更</h2>
+    <p>
+      本ポリシーは法令の改正・サービスの変更等に応じて改定されることがあります。
+      重要な変更が生じた場合は、本アプリ内またはウェブサイト上での告知により通知します。
+      変更後も継続して本アプリを利用された場合は、改定後のポリシーに同意したものとみなします。
+    </p>
+
+    <h2>第12条　お問い合わせ</h2>
+    <p>本ポリシーに関するご質問・ご意見は以下にお寄せください。</p>
+
+    <div class="info-box">
+      <p><strong>Mineria Labs</strong></p>
+      <p>〒101-0051 東京都千代田区神田神保町3丁目11番6号 神保町ビル10階</p>
+      <p>電話：090-4130-7404</p>
+      <p>メール：<a href="mailto:support@mineria-labs.com">support@mineria-labs.com</a></p>
+    </div>
+
+  </main>
+
+  <footer>
+    <nav class="footer-links">
+      <a href="index.html">トップ</a>
+      <a href="privacy.html">プライバシーポリシー</a>
+      <a href="terms.html">利用規約</a>
+      <a href="mailto:support@mineria-labs.com">お問い合わせ</a>
+    </nav>
+    <p class="footer-copy">© 2026 Mineria Labs. All rights reserved.</p>
+  </footer>
+
+</body>
+</html>

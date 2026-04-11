@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>利用規約 — Mineria</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&family=Cormorant+Garamond:wght@300;400;600&display=swap"
+    rel="stylesheet"
+  />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:       #0b0b12;
+      --bg2:      #13131f;
+      --gold:     #c9a84c;
+      --teal:     #3ec9a7;
+      --text:     #ede9e4;
+      --text-dim: #9b9590;
+      --border:   rgba(201,168,76,0.18);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Noto Sans JP', sans-serif;
+      font-weight: 400;
+      line-height: 1.9;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { color: var(--gold); }
+    a:hover { color: #e8d08a; }
+
+    nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 18px 40px;
+      background: var(--bg2);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.4rem;
+      font-weight: 600;
+      color: var(--gold);
+      text-decoration: none;
+    }
+
+    .nav-back {
+      font-size: 0.82rem;
+      color: var(--text-dim);
+      transition: color 0.2s;
+    }
+
+    .nav-back:hover { color: var(--gold); }
+
+    main {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 72px 24px 96px;
+    }
+
+    .doc-header {
+      margin-bottom: 56px;
+      padding-bottom: 32px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .doc-label {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--teal);
+      margin-bottom: 12px;
+    }
+
+    .doc-header h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.6rem;
+      font-weight: 300;
+      color: var(--text);
+      margin-bottom: 12px;
+    }
+
+    .doc-date {
+      font-size: 0.85rem;
+      color: var(--text-dim);
+      font-weight: 300;
+    }
+
+    h2 {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--text);
+      margin: 48px 0 16px;
+      padding-left: 14px;
+      border-left: 3px solid var(--gold);
+    }
+
+    h3 {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--text);
+      margin: 28px 0 10px;
+    }
+
+    p {
+      font-size: 0.92rem;
+      color: var(--text-dim);
+      font-weight: 300;
+      margin-bottom: 14px;
+    }
+
+    ul {
+      list-style: none;
+      margin: 12px 0 20px;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    ul li {
+      font-size: 0.92rem;
+      color: var(--text-dim);
+      font-weight: 300;
+      padding-left: 20px;
+      position: relative;
+    }
+
+    ul li::before {
+      content: '·';
+      position: absolute;
+      left: 6px;
+      color: var(--gold);
+      font-size: 1.2rem;
+      line-height: 1.4;
+    }
+
+    .info-box {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 24px;
+      margin: 24px 0;
+    }
+
+    .info-box p { margin-bottom: 6px; }
+    .info-box p:last-child { margin-bottom: 0; }
+
+    .highlight-box {
+      background: rgba(201,168,76,0.06);
+      border: 1px solid rgba(201,168,76,0.3);
+      border-radius: 10px;
+      padding: 20px 24px;
+      margin: 16px 0 24px;
+    }
+
+    .highlight-box p {
+      margin-bottom: 0;
+      font-size: 0.9rem;
+    }
+
+    footer {
+      background: var(--bg2);
+      border-top: 1px solid var(--border);
+      padding: 32px 24px;
+      text-align: center;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 24px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-bottom: 16px;
+    }
+
+    .footer-links a {
+      font-size: 0.82rem;
+      color: var(--text-dim);
+    }
+
+    .footer-copy {
+      font-size: 0.78rem;
+      color: var(--text-dim);
+      font-weight: 300;
+    }
+
+    @media (max-width: 640px) {
+      nav { padding: 14px 20px; }
+      main { padding: 48px 20px 72px; }
+      .doc-header h1 { font-size: 2rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="index.html" class="nav-logo">Mineria</a>
+    <a href="index.html" class="nav-back">← トップに戻る</a>
+  </nav>
+
+  <main>
+    <div class="doc-header">
+      <p class="doc-label">Legal</p>
+      <h1>利用規約</h1>
+      <p class="doc-date">制定日：2026年4月1日　　最終更新日：2026年4月11日</p>
+    </div>
+
+    <p>
+      本利用規約（以下「本規約」）は、Mineria Labs（以下「当社」）が提供するモバイルアプリケーション「Mineria」
+      （以下「本アプリ」）の利用条件を定めるものです。本アプリをご利用になる前に、本規約をよくお読みください。
+      本アプリをダウンロード・インストール・利用することで、本規約に同意したものとみなします。
+    </p>
+
+    <h2>第1条　定義</h2>
+    <ul>
+      <li>「ユーザー」：本アプリをインストール・利用するすべての方（ゲスト・無料・プレミアムを含む）</li>
+      <li>「コンテンツ」：ユーザーが本アプリに登録・投稿する写真・文章・データ等の一切</li>
+      <li>「サービス」：本アプリが提供するコレクション管理・AI識別・ギャラリー共有等の機能</li>
+    </ul>
+
+    <h2>第2条　利用資格</h2>
+    <p>本アプリは、以下の条件を満たす方にご利用いただけます。</p>
+    <ul>
+      <li>13歳以上であること</li>
+      <li>本規約に同意すること</li>
+      <li>本アプリのインストールが可能な iOS または Android デバイスを所持していること</li>
+    </ul>
+    <p>
+      13歳未満の方は本アプリをご利用いただけません。
+      18歳未満の方は、保護者の同意を得た上でご利用ください。
+    </p>
+
+    <h2>第3条　アカウント</h2>
+
+    <h3>3-1. アカウント登録</h3>
+    <p>
+      一部の機能はアカウント登録なしでご利用いただけますが（ゲストモード）、
+      全機能をご利用いただくにはアカウント登録が必要です。
+    </p>
+
+    <h3>3-2. アカウントの管理</h3>
+    <p>
+      ユーザーは自身のアカウント情報（パスワード等）を適切に管理する責任を負います。
+      アカウントの不正使用による損害について、当社は責任を負いません。
+    </p>
+
+    <h3>3-3. ゲストデータの取り扱い</h3>
+    <p>
+      ゲストモードで登録したデータは匿名認証と紐付けられて保存されますが、
+      アプリの削除・機種変更によりデータが失われる場合があります。
+      アカウント登録することでデータを引き継ぐことができます。
+    </p>
+
+    <h2>第4条　プランと料金</h2>
+
+    <h3>4-1. プランの種類</h3>
+    <p>本アプリは「無料プラン」と「プレミアムプラン（月額500円）」の2種類のプランを提供します。</p>
+
+    <h3>4-2. プレミアムプランの契約</h3>
+    <ul>
+      <li>月額料金：¥500（税込）</li>
+      <li>初回トライアル：2ヶ月間無料</li>
+      <li>決済：Apple App Store または Google Play ストアを通じて処理されます</li>
+      <li>更新：毎月自動更新。更新日の24時間前までにキャンセルしない限り継続課金されます</li>
+    </ul>
+
+    <h3>4-3. キャンセル・返金</h3>
+    <p>
+      サブスクリプションのキャンセルは、各ストアのアカウント設定から行えます。
+      キャンセル後も、当該課金期間の終了まではプレミアム機能をご利用いただけます。
+      返金については、Apple App Store または Google Play の各ポリシーに従います。
+    </p>
+
+    <div class="highlight-box">
+      <p>
+        ⚠️ 課金・返金の手続きは当社ではなく Apple / Google が行います。
+        返金のご要望は各ストアのサポートへお問い合わせください。
+      </p>
+    </div>
+
+    <h2>第5条　コンテンツの取り扱い</h2>
+
+    <h3>5-1. ユーザーのコンテンツ所有権</h3>
+    <p>
+      ユーザーが投稿・登録したコンテンツの著作権はユーザーに帰属します。
+    </p>
+
+    <h3>5-2. ライセンスの付与</h3>
+    <p>
+      ユーザーは、本アプリの運営・提供に必要な範囲において、
+      当社が投稿コンテンツを使用・表示・複製することを許諾します。
+      ただし、公開設定（isPublic: true）にした標本データのみを対象とし、
+      非公開データおよび非公開フィールドは含まれません。
+    </p>
+
+    <h3>5-3. 禁止コンテンツ</h3>
+    <p>以下のコンテンツの投稿・掲載は禁止します。</p>
+    <ul>
+      <li>違法・有害・わいせつなコンテンツ</li>
+      <li>他者の知的財産権・肖像権・プライバシーを侵害するコンテンツ</li>
+      <li>虚偽・誤解を招く情報</li>
+      <li>スパム・広告目的のコンテンツ</li>
+      <li>鉱物・標本と無関係なコンテンツ</li>
+    </ul>
+
+    <h2>第6条　禁止事項</h2>
+    <p>ユーザーは本アプリの利用にあたり、以下の行為を行ってはなりません。</p>
+    <ul>
+      <li>本規約・法令に違反する行為</li>
+      <li>当社・第三者の知的財産権・プライバシー・名誉を侵害する行為</li>
+      <li>本アプリのリバースエンジニアリング・改ざん・不正アクセス</li>
+      <li>自動化ツール・スクレイピングによるデータ収集</li>
+      <li>他ユーザーへの嫌がらせ・迷惑行為</li>
+      <li>マルウェア・ウイルスの送信</li>
+      <li>本アプリのサーバー・インフラへの過度な負荷をかける行為</li>
+    </ul>
+
+    <h2>第7条　知的財産権</h2>
+    <p>
+      本アプリのソフトウェア・デザイン・ロゴ・テキスト等に関する知的財産権は、
+      当社または正当な権利者に帰属します。
+      ユーザーは、本規約が明示的に許可する範囲を超えて、これらを使用することはできません。
+    </p>
+
+    <h2>第8条　AI識別機能の免責</h2>
+    <p>
+      本アプリのAI自動識別機能は、参考情報の提供を目的としており、識別結果の正確性・完全性を保証するものではありません。
+      識別結果に基づいた行動（鉱物の価値評価・購入・売却等）についての判断はユーザー自身の責任で行ってください。
+      当社は識別結果の誤りによる損害について責任を負いません。
+    </p>
+
+    <h2>第9条　サービスの変更・中断・終了</h2>
+    <p>
+      当社は、事前の通知なく本アプリの機能の一部または全部を変更・中断・終了する場合があります。
+      これによってユーザーが被った損害について、当社は一切の責任を負いません。
+      サービス終了時には、可能な限り事前に告知します。
+    </p>
+
+    <h2>第10条　免責事項</h2>
+    <p>
+      本アプリは「現状のまま」提供され、特定目的への適合性・無中断・無エラーを保証するものではありません。
+      以下の事由による損害について、当社は責任を負いません。
+    </p>
+    <ul>
+      <li>本アプリの不具合・障害・停止によるデータの損失</li>
+      <li>ユーザーによる不正な利用</li>
+      <li>第三者による不正アクセス</li>
+      <li>AI識別結果の誤り</li>
+      <li>外部サービス（Firebase・Google等）の障害</li>
+    </ul>
+
+    <h2>第11条　損害賠償の制限</h2>
+    <p>
+      当社の責任が認められる場合であっても、その賠償額は、
+      ユーザーが当該月に支払った料金（無料プランの場合は0円）を上限とします。
+    </p>
+
+    <h2>第12条　アカウントの停止・削除</h2>
+    <p>
+      ユーザーが本規約に違反した場合、当社は事前通知なしにアカウントを停止・削除できます。
+      また、ユーザーはいつでも本アプリ内の機能からアカウントを削除できます。
+    </p>
+
+    <h2>第13条　規約の変更</h2>
+    <p>
+      当社は本規約をいつでも変更できます。重要な変更がある場合は、
+      本アプリ内またはウェブサイト上での告知により30日前を目安に通知します。
+      変更後も継続して本アプリを利用した場合、改定後の規約に同意したものとみなします。
+    </p>
+
+    <h2>第14条　準拠法・管轄</h2>
+    <p>
+      本規約は日本法に準拠し、日本法に従って解釈されます。
+      本アプリに関する紛争については、東京地方裁判所を第一審の専属的合意管轄裁判所とします。
+    </p>
+
+    <h2>第15条　お問い合わせ</h2>
+    <p>本規約に関するご質問・ご意見は以下にお寄せください。</p>
+
+    <div class="info-box">
+      <p><strong>Mineria Labs</strong></p>
+      <p>〒101-0051 東京都千代田区神田神保町3丁目11番6号 神保町ビル10階</p>
+      <p>電話：090-4130-7404</p>
+      <p>メール：<a href="mailto:support@mineria-labs.com">support@mineria-labs.com</a></p>
+    </div>
+
+  </main>
+
+  <footer>
+    <nav class="footer-links">
+      <a href="index.html">トップ</a>
+      <a href="privacy.html">プライバシーポリシー</a>
+      <a href="terms.html">利用規約</a>
+      <a href="mailto:support@mineria-labs.com">お問い合わせ</a>
+    </nav>
+    <p class="footer-copy">© 2026 Mineria Labs. All rights reserved.</p>
+  </footer>
+
+</body>
+</html>
