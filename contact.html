@@ -433,14 +433,24 @@
           headers: { 'Content-Type': 'application/json' }
         });
 
-        const data = await response.json();
+        // レスポンスをテキストで受け取り、JSONパースを安全に行う
+        const raw = await response.text();
+        console.debug('[contact] status:', response.status, 'body:', raw);
+
+        let data;
+        try {
+          data = JSON.parse(raw);
+        } catch {
+          // JSON でない = Worker未デプロイ or サーバーエラー
+          throw new Error(`サーバーエラー (HTTP ${response.status}) — ログを確認してください`);
+        }
 
         if (response.ok && data.ok) {
           alertSuccess.classList.add('show');
           form.reset();
           alertSuccess.scrollIntoView({ behavior: 'smooth', block: 'center' });
         } else {
-          throw new Error(data.error || '送信失敗');
+          throw new Error(data.error || `送信失敗 (${response.status})`);
         }
       } catch (err) {
         alertError.textContent = `✗ ${err.message || '送信に失敗しました。しばらくしてから再度お試しください。'}`;
