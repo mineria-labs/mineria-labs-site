@@ -82,7 +82,8 @@ async function handleContact(request, env) {
     if (!res.ok) {
       const err = await res.text();
       console.error("Resend error:", res.status, err);
-      return jsonError("メール送信に失敗しました", 500);
+      // 開発デバッグ用にResendのエラー詳細を返す（本番では削除可）
+      return jsonError(`Resend ${res.status}: ${err}`, 500);
     }
 
     return jsonOk();
