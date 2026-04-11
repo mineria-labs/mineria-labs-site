@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>お問い合わせ — Mineria</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&family=Cormorant+Garamond:wght@300;400;600&display=swap"
+    rel="stylesheet"
+  />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:       #0b0b12;
+      --bg2:      #13131f;
+      --bg3:      #1c1c2e;
+      --gold:     #c9a84c;
+      --gold-light: #e8d08a;
+      --teal:     #3ec9a7;
+      --text:     #ede9e4;
+      --text-dim: #9b9590;
+      --border:   rgba(201,168,76,0.18);
+      --input-bg: #181826;
+      --input-border: rgba(255,255,255,0.12);
+      --input-border-focus: var(--gold);
+      --radius:   10px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Noto Sans JP', sans-serif;
+      font-weight: 400;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    a { color: var(--gold); text-decoration: none; }
+    a:hover { color: var(--gold-light); }
+
+    /* ── Nav ── */
+    nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 18px 40px;
+      background: var(--bg2);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.4rem;
+      font-weight: 600;
+      color: var(--gold);
+    }
+
+    .nav-back {
+      font-size: 0.82rem;
+      color: var(--text-dim);
+      transition: color 0.2s;
+    }
+    .nav-back:hover { color: var(--gold); }
+
+    /* ── Main ── */
+    main {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 72px 24px;
+    }
+
+    .form-wrapper {
+      width: 100%;
+      max-width: 680px;
+    }
+
+    /* ── Header ── */
+    .form-header {
+      margin-bottom: 40px;
+    }
+
+    .form-eyebrow {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--teal);
+      margin-bottom: 10px;
+    }
+
+    .form-header h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.4rem;
+      font-weight: 300;
+      color: var(--text);
+      margin-bottom: 10px;
+    }
+
+    .form-header p {
+      font-size: 0.9rem;
+      color: var(--text-dim);
+      font-weight: 300;
+    }
+
+    /* ── Form Card ── */
+    .form-card {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 40px 40px 36px;
+    }
+
+    /* ── Field ── */
+    .field {
+      margin-bottom: 24px;
+    }
+
+    label {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.88rem;
+      font-weight: 500;
+      color: var(--text);
+      margin-bottom: 8px;
+    }
+
+    .required {
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: #e05a5a;
+      letter-spacing: 0.04em;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    textarea,
+    select {
+      width: 100%;
+      background: var(--input-bg);
+      border: 1px solid var(--input-border);
+      border-radius: var(--radius);
+      padding: 14px 16px;
+      font-family: 'Noto Sans JP', sans-serif;
+      font-size: 0.9rem;
+      color: var(--text);
+      font-weight: 300;
+      outline: none;
+      transition: border-color 0.2s, box-shadow 0.2s;
+      -webkit-appearance: none;
+    }
+
+    input::placeholder,
+    textarea::placeholder {
+      color: rgba(155,149,144,0.55);
+    }
+
+    input:focus,
+    textarea:focus,
+    select:focus {
+      border-color: var(--input-border-focus);
+      box-shadow: 0 0 0 3px rgba(201,168,76,0.12);
+    }
+
+    textarea {
+      resize: vertical;
+      min-height: 180px;
+    }
+
+    /* ── Submit ── */
+    .submit-btn {
+      width: 100%;
+      padding: 16px;
+      background: var(--gold);
+      color: #0b0b12;
+      font-family: 'Noto Sans JP', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 700;
+      border: none;
+      border-radius: var(--radius);
+      cursor: pointer;
+      transition: background 0.2s, transform 0.15s;
+      letter-spacing: 0.04em;
+      margin-top: 8px;
+    }
+
+    .submit-btn:hover {
+      background: var(--gold-light);
+      transform: translateY(-1px);
+    }
+
+    .submit-btn:active {
+      transform: translateY(0);
+    }
+
+    .submit-btn:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    /* ── Divider ── */
+    .field-divider {
+      height: 1px;
+      background: var(--border);
+      margin: 28px 0;
+    }
+
+    /* ── Note ── */
+    .form-note {
+      font-size: 0.78rem;
+      color: var(--text-dim);
+      font-weight: 300;
+      text-align: center;
+      margin-top: 16px;
+      line-height: 1.6;
+    }
+
+    /* ── Success / Error States ── */
+    .alert {
+      border-radius: var(--radius);
+      padding: 16px 20px;
+      font-size: 0.88rem;
+      font-weight: 400;
+      margin-bottom: 24px;
+      display: none;
+    }
+
+    .alert.success {
+      background: rgba(62,201,167,0.1);
+      border: 1px solid rgba(62,201,167,0.35);
+      color: var(--teal);
+    }
+
+    .alert.error {
+      background: rgba(224,90,90,0.1);
+      border: 1px solid rgba(224,90,90,0.35);
+      color: #e07a7a;
+    }
+
+    .alert.show { display: block; }
+
+    /* ── Footer ── */
+    footer {
+      background: var(--bg2);
+      border-top: 1px solid var(--border);
+      padding: 28px 24px;
+      text-align: center;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 24px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-bottom: 12px;
+    }
+
+    .footer-links a {
+      font-size: 0.8rem;
+      color: var(--text-dim);
+    }
+
+    .footer-copy {
+      font-size: 0.76rem;
+      color: var(--text-dim);
+      font-weight: 300;
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 640px) {
+      nav { padding: 14px 20px; }
+      main { padding: 40px 16px; }
+      .form-card { padding: 28px 20px 24px; }
+      .form-header h1 { font-size: 1.9rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Nav -->
+  <nav>
+    <a href="index.html" class="nav-logo">Mineria</a>
+    <a href="index.html" class="nav-back">← トップに戻る</a>
+  </nav>
+
+  <!-- Main -->
+  <main>
+    <div class="form-wrapper">
+
+      <div class="form-header">
+        <p class="form-eyebrow">Contact</p>
+        <h1>お問い合わせ</h1>
+        <p>ご質問・バグ報告・機能リクエスト・法人連携など、お気軽にお問い合わせください。<br />通常2〜3営業日以内に返信いたします。</p>
+      </div>
+
+      <!-- Alert messages -->
+      <div class="alert success" id="alertSuccess">
+        ✓ メッセージを送信しました。2〜3営業日以内にご返信いたします。
+      </div>
+      <div class="alert error" id="alertError">
+        ✗ 送信に失敗しました。しばらくしてから再度お試しいただくか、直接 support@mineria-labs.com までご連絡ください。
+      </div>
+
+      <div class="form-card">
+        <!-- Formspree endpoint: action の YOUR_FORM_ID を Formspree のフォームIDに差し替えてください -->
+        <form id="contactForm" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+
+          <!-- お名前 -->
+          <div class="field">
+            <label for="name">
+              お名前
+              <span class="required">（必須）</span>
+            </label>
+            <input
+              type="text"
+              id="name"
+              name="name"
+              placeholder="山田 太郎"
+              required
+              autocomplete="name"
+            />
+          </div>
+
+          <!-- メールアドレス -->
+          <div class="field">
+            <label for="email">
+              メールアドレス
+              <span class="required">（必須）</span>
+            </label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              placeholder="your-email@example.com"
+              required
+              autocomplete="email"
+            />
+          </div>
+
+          <!-- お問い合わせ種別 -->
+          <div class="field">
+            <label for="category">お問い合わせ種別</label>
+            <select id="category" name="category">
+              <option value="">選択してください</option>
+              <option value="bug">バグ・不具合の報告</option>
+              <option value="feature">機能リクエスト</option>
+              <option value="account">アカウント・課金について</option>
+              <option value="press">プレス・取材</option>
+              <option value="business">法人連携・提携</option>
+              <option value="other">その他</option>
+            </select>
+          </div>
+
+          <!-- お問い合わせ内容 -->
+          <div class="field">
+            <label for="message">
+              お問い合わせ内容
+              <span class="required">（必須）</span>
+            </label>
+            <textarea
+              id="message"
+              name="message"
+              placeholder="お問い合わせ内容をご記入ください"
+              required
+            ></textarea>
+          </div>
+
+          <!-- Formspree のスパム対策（hidden field） -->
+          <input type="text" name="_gotcha" style="display:none" />
+
+          <button type="submit" class="submit-btn" id="submitBtn">
+            送信する
+          </button>
+
+        </form>
+      </div>
+
+      <p class="form-note">
+        または直接メールでご連絡いただくこともできます：
+        <a href="mailto:support@mineria-labs.com">support@mineria-labs.com</a>
+      </p>
+
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <nav class="footer-links">
+      <a href="index.html">トップ</a>
+      <a href="privacy.html">プライバシーポリシー</a>
+      <a href="terms.html">利用規約</a>
+      <a href="contact.html">お問い合わせ</a>
+    </nav>
+    <p class="footer-copy">© 2026 Mineria Labs. All rights reserved.</p>
+  </footer>
+
+  <script>
+    const form = document.getElementById('contactForm');
+    const submitBtn = document.getElementById('submitBtn');
+    const alertSuccess = document.getElementById('alertSuccess');
+    const alertError = document.getElementById('alertError');
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      submitBtn.disabled = true;
+      submitBtn.textContent = '送信中…';
+      alertSuccess.classList.remove('show');
+      alertError.classList.remove('show');
+
+      try {
+        const response = await fetch(form.action, {
+          method: 'POST',
+          body: new FormData(form),
+          headers: { 'Accept': 'application/json' }
+        });
+
+        if (response.ok) {
+          alertSuccess.classList.add('show');
+          form.reset();
+          // ページ上部にスクロールしてメッセージを見せる
+          alertSuccess.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        } else {
+          throw new Error('送信失敗');
+        }
+      } catch {
+        alertError.classList.add('show');
+        alertError.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      } finally {
+        submitBtn.disabled = false;
+        submitBtn.textContent = '送信する';
+      }
+    });
+  </script>
+
+</body>
+</html>
