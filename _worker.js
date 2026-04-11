@@ -51,6 +51,14 @@ async function handleContact(request, env) {
     return jsonError("メールアドレスの形式が正しくありません", 400);
   }
 
+  // ── APIキー確認 ──
+  if (!env.RESEND_API_KEY) {
+    return jsonError("RESEND_API_KEY が未設定です", 500);
+  }
+  if (!env.RESEND_API_KEY.startsWith("re_")) {
+    return jsonError(`APIキーの形式が不正です（先頭: ${env.RESEND_API_KEY.substring(0, 5)}）`, 500);
+  }
+
   // ── Resend API でメール送信 ──
   const subject = `[Mineria お問い合わせ] ${category} — ${name}`;
   const body = [
