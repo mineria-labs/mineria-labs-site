@@ -1,6 +1,10 @@
 name = "mineria-labs-site"
 main = "_worker.js"
 compatibility_date = "2026-04-11"
+compatibility_flags = ["nodejs_compat"]
 
 [assets]
 directory = "."
+
+[observability]
+enabled = true
