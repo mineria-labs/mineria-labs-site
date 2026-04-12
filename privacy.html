@@ -16,6 +16,7 @@
       --bg:       #0b0b12;
       --bg2:      #13131f;
       --gold:     #c9a84c;
+      --gold-light: #e8d08a;
       --teal:     #3ec9a7;
       --text:     #ede9e4;
       --text-dim: #9b9590;
@@ -34,7 +35,7 @@
     }
 
     a { color: var(--gold); }
-    a:hover { color: #e8d08a; }
+    a:hover { color: var(--gold-light); }
 
     nav {
       display: flex;
@@ -53,6 +54,12 @@
       text-decoration: none;
     }
 
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
     .nav-back {
       font-size: 0.82rem;
       color: var(--text-dim);
@@ -60,6 +67,40 @@
     }
 
     .nav-back:hover { color: var(--gold); }
+
+    /* ── Language Switcher ── */
+    .lang-switcher {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 3px;
+    }
+
+    .lang-btn {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      padding: 5px 10px;
+      border: none;
+      border-radius: 5px;
+      background: transparent;
+      color: var(--text-dim);
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      cursor: pointer;
+      transition: background 0.15s, color 0.15s;
+      font-family: 'Noto Sans JP', sans-serif;
+      line-height: 1;
+    }
+
+    .lang-btn .flag { font-size: 1rem; line-height: 1; }
+    .lang-btn:hover { color: var(--text); }
+    .lang-btn.active { background: var(--gold); color: #0b0b12; }
+    .lang-btn.active:hover { background: var(--gold-light); }
 
     main {
       max-width: 760px;
@@ -208,6 +249,7 @@
       nav { padding: 14px 20px; }
       main { padding: 48px 20px 72px; }
       .doc-header h1 { font-size: 2rem; }
+      .lang-btn { padding: 4px 7px; }
     }
   </style>
 </head>
@@ -215,202 +257,386 @@
 
   <nav>
     <a href="index.html" class="nav-logo">Mineria</a>
-    <a href="index.html" class="nav-back">← トップに戻る</a>
+    <div class="nav-right">
+      <a href="index.html" class="nav-back" id="nav-back-link">← トップに戻る</a>
+      <div class="lang-switcher" role="group" aria-label="Language">
+        <button class="lang-btn active" data-lang="ja" onclick="setLang('ja')">
+          <span class="flag">🇯🇵</span> JA
+        </button>
+        <button class="lang-btn" data-lang="en" onclick="setLang('en')">
+          <span class="flag">🇺🇸</span> EN
+        </button>
+      </div>
+    </div>
   </nav>
 
   <main>
-    <div class="doc-header">
-      <p class="doc-label">Legal</p>
-      <h1>プライバシーポリシー</h1>
-      <p class="doc-date">制定日：2026年4月1日　　最終更新日：2026年4月11日</p>
-    </div>
 
-    <p>
-      Mineria Labs（以下「当社」）は、モバイルアプリケーション「Mineria」（以下「本アプリ」）において、
-      ユーザーの個人情報及びプライバシーの保護を重要と考えており、
-      以下のプライバシーポリシー（以下「本ポリシー」）に従い、個人情報を適切に取り扱います。
-    </p>
+    <!-- ── Japanese Content ── -->
+    <div id="content-ja">
+      <div class="doc-header">
+        <p class="doc-label">Legal</p>
+        <h1>プライバシーポリシー</h1>
+        <p class="doc-date">制定日：2026年4月1日　　最終更新日：2026年4月11日</p>
+      </div>
 
-    <h2>第1条　収集する情報</h2>
+      <p>
+        Mineria Labs（以下「当社」）は、モバイルアプリケーション「Mineria」（以下「本アプリ」）において、
+        ユーザーの個人情報及びプライバシーの保護を重要と考えており、
+        以下のプライバシーポリシー（以下「本ポリシー」）に従い、個人情報を適切に取り扱います。
+      </p>
 
-    <h3>1-1. アカウント登録情報</h3>
-    <p>アカウント登録時に以下の情報を収集します。</p>
-    <ul>
-      <li>メールアドレス（メール認証の場合）</li>
-      <li>Google アカウントのプロフィール情報（Google 認証の場合）</li>
-      <li>ニックネーム（任意入力）</li>
-      <li>プロフィール画像（任意アップロード）</li>
-    </ul>
+      <h2>第1条　収集する情報</h2>
 
-    <h3>1-2. コレクションデータ</h3>
-    <p>本アプリの利用中に、ユーザーが登録する以下のデータを収集・保存します。</p>
-    <ul>
-      <li>標本写真・動画ファイル</li>
-      <li>鉱物名・産地・物理データ（硬度・サイズ・重量等）</li>
-      <li>購入価格・入手情報（非公開フィールド、本人のみ参照可）</li>
-      <li>公開メモ・プライベートメモ</li>
-    </ul>
+      <h3>1-1. アカウント登録情報</h3>
+      <p>アカウント登録時に以下の情報を収集します。</p>
+      <ul>
+        <li>メールアドレス（メール認証の場合）</li>
+        <li>Google アカウントのプロフィール情報（Google 認証の場合）</li>
+        <li>ニックネーム（任意入力）</li>
+        <li>プロフィール画像（任意アップロード）</li>
+      </ul>
 
-    <h3>1-3. 利用ログ・技術情報</h3>
-    <ul>
-      <li>AI識別機能の利用回数・利用日時</li>
-      <li>アプリのクラッシュログ・エラーログ（Firebase Crashlytics）</li>
-      <li>デバイス識別子（ゲストモードにおけるAI利用回数管理のみに使用）</li>
-    </ul>
+      <h3>1-2. コレクションデータ</h3>
+      <p>本アプリの利用中に、ユーザーが登録する以下のデータを収集・保存します。</p>
+      <ul>
+        <li>標本写真・動画ファイル</li>
+        <li>鉱物名・産地・物理データ（硬度・サイズ・重量等）</li>
+        <li>購入価格・入手情報（非公開フィールド、本人のみ参照可）</li>
+        <li>公開メモ・プライベートメモ</li>
+      </ul>
 
-    <h2>第2条　情報の利用目的</h2>
-    <p>収集した情報は以下の目的でのみ利用します。</p>
-    <ul>
-      <li>本アプリのサービス提供・運営</li>
-      <li>ユーザーアカウントの管理・認証</li>
-      <li>AI自動識別機能の提供</li>
-      <li>コレクションデータのクラウドバックアップ（プレミアムプランのみ）</li>
-      <li>サービスの改善・新機能の開発</li>
-      <li>不正利用の検知・防止</li>
-      <li>お問い合わせへの対応</li>
-      <li>法令上の義務への対応</li>
-    </ul>
+      <h3>1-3. 利用ログ・技術情報</h3>
+      <ul>
+        <li>AI識別機能の利用回数・利用日時</li>
+        <li>アプリのクラッシュログ・エラーログ（Firebase Crashlytics）</li>
+        <li>デバイス識別子（ゲストモードにおけるAI利用回数管理のみに使用）</li>
+      </ul>
 
-    <h2>第3条　第三者への提供</h2>
-    <p>
-      当社は、以下の場合を除き、ユーザーの個人情報を第三者に提供・開示しません。
-    </p>
-    <ul>
-      <li>ユーザーご本人の同意がある場合</li>
-      <li>法令に基づく場合（裁判所・行政機関の命令等）</li>
-      <li>人の生命・身体・財産の保護のために必要な場合</li>
-    </ul>
+      <h2>第2条　情報の利用目的</h2>
+      <p>収集した情報は以下の目的でのみ利用します。</p>
+      <ul>
+        <li>本アプリのサービス提供・運営</li>
+        <li>ユーザーアカウントの管理・認証</li>
+        <li>AI自動識別機能の提供</li>
+        <li>コレクションデータのクラウドバックアップ（プレミアムプランのみ）</li>
+        <li>サービスの改善・新機能の開発</li>
+        <li>不正利用の検知・防止</li>
+        <li>お問い合わせへの対応</li>
+        <li>法令上の義務への対応</li>
+      </ul>
 
-    <h2>第4条　利用する外部サービス</h2>
-    <p>本アプリは以下の外部サービスを利用しており、各サービスのプライバシーポリシーが適用される場合があります。</p>
+      <h2>第3条　第三者への提供</h2>
+      <p>
+        当社は、以下の場合を除き、ユーザーの個人情報を第三者に提供・開示しません。
+      </p>
+      <ul>
+        <li>ユーザーご本人の同意がある場合</li>
+        <li>法令に基づく場合（裁判所・行政機関の命令等）</li>
+        <li>人の生命・身体・財産の保護のために必要な場合</li>
+      </ul>
 
-    <table>
-      <thead>
-        <tr>
-          <th>サービス</th>
-          <th>用途</th>
-          <th>提供元</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>Firebase Authentication</td>
-          <td>ユーザー認証</td>
-          <td>Google LLC</td>
-        </tr>
-        <tr>
-          <td>Cloud Firestore</td>
-          <td>データ保存</td>
-          <td>Google LLC</td>
-        </tr>
-        <tr>
-          <td>Firebase Storage</td>
-          <td>写真・動画ファイルの保存</td>
-          <td>Google LLC</td>
-        </tr>
-        <tr>
-          <td>Firebase Crashlytics</td>
-          <td>クラッシュレポート収集</td>
-          <td>Google LLC</td>
-        </tr>
-        <tr>
-          <td>Gemini API（Vertex AI）</td>
-          <td>AI鉱物識別</td>
-          <td>Google LLC</td>
-        </tr>
-        <tr>
-          <td>Google Sign-In</td>
-          <td>Google認証</td>
-          <td>Google LLC</td>
-        </tr>
-      </tbody>
-    </table>
+      <h2>第4条　利用する外部サービス</h2>
+      <p>本アプリは以下の外部サービスを利用しており、各サービスのプライバシーポリシーが適用される場合があります。</p>
 
-    <p>
-      Google のプライバシーポリシーは
-      <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">https://policies.google.com/privacy</a>
-      をご参照ください。
-    </p>
+      <table>
+        <thead>
+          <tr>
+            <th>サービス</th>
+            <th>用途</th>
+            <th>提供元</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Firebase Authentication</td><td>ユーザー認証</td><td>Google LLC</td></tr>
+          <tr><td>Cloud Firestore</td><td>データ保存</td><td>Google LLC</td></tr>
+          <tr><td>Firebase Storage</td><td>写真・動画ファイルの保存</td><td>Google LLC</td></tr>
+          <tr><td>Firebase Crashlytics</td><td>クラッシュレポート収集</td><td>Google LLC</td></tr>
+          <tr><td>Gemini API（Vertex AI）</td><td>AI鉱物識別</td><td>Google LLC</td></tr>
+          <tr><td>Google Sign-In</td><td>Google認証</td><td>Google LLC</td></tr>
+        </tbody>
+      </table>
 
-    <h2>第5条　非公開フィールドの取り扱い</h2>
-    <p>
-      標本データのうち以下のフィールドは「非公開フィールド」として扱われ、
-      ユーザー本人以外には一切表示・送信されません。
-    </p>
-    <ul>
-      <li>購入価格・入手先・入手日</li>
-      <li>売却価格・手放した先・手放した日</li>
-      <li>プライベートメモ</li>
-      <li>管理番号</li>
-    </ul>
-    <p>
-      標本を「公開」設定にした場合も、上記の非公開フィールドは他ユーザーには送信されません。
-    </p>
+      <p>
+        Google のプライバシーポリシーは
+        <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">https://policies.google.com/privacy</a>
+        をご参照ください。
+      </p>
 
-    <h2>第6条　いいね・フォロー情報の取り扱い</h2>
-    <p>
-      いいね・フォロー機能に関する情報（誰がいいねしたか、誰がフォローしたか等）は
-      内部管理目的でのみ保存され、他のユーザーのUIには一切表示されません。
-    </p>
+      <h2>第5条　非公開フィールドの取り扱い</h2>
+      <p>
+        標本データのうち以下のフィールドは「非公開フィールド」として扱われ、
+        ユーザー本人以外には一切表示・送信されません。
+      </p>
+      <ul>
+        <li>購入価格・入手先・入手日</li>
+        <li>売却価格・手放した先・手放した日</li>
+        <li>プライベートメモ</li>
+        <li>管理番号</li>
+      </ul>
+      <p>
+        標本を「公開」設定にした場合も、上記の非公開フィールドは他ユーザーには送信されません。
+      </p>
 
-    <h2>第7条　データの保存期間</h2>
-    <ul>
-      <li>アカウントデータ・標本データ：アカウント削除まで保持</li>
-      <li>ゲスト（匿名認証）データ：アプリ削除・機種変更により失われる場合があります</li>
-      <li>お問い合わせ記録：返信完了後3年間保持</li>
-    </ul>
+      <h2>第6条　いいね・フォロー情報の取り扱い</h2>
+      <p>
+        いいね・フォロー機能に関する情報（誰がいいねしたか、誰がフォローしたか等）は
+        内部管理目的でのみ保存され、他のユーザーのUIには一切表示されません。
+      </p>
 
-    <h2>第8条　データの削除</h2>
-    <p>
-      ユーザーは本アプリ内の「アカウント削除」機能から、いつでも自身のアカウントおよびすべての関連データを削除できます。
-      削除されたデータは原則として復元できません。
-    </p>
-    <p>
-      データ削除に関するお問い合わせは
-      <a href="mailto:support@mineria-labs.com">support@mineria-labs.com</a> までご連絡ください。
-    </p>
+      <h2>第7条　データの保存期間</h2>
+      <ul>
+        <li>アカウントデータ・標本データ：アカウント削除まで保持</li>
+        <li>ゲスト（匿名認証）データ：アプリ削除・機種変更により失われる場合があります</li>
+        <li>お問い合わせ記録：返信完了後3年間保持</li>
+      </ul>
 
-    <h2>第9条　お子様のプライバシー（COPPA）</h2>
-    <p>
-      本アプリは13歳未満の方を対象としておりません。
-      13歳未満の方の個人情報を意図して収集することはありません。
-      13歳未満のユーザーからの個人情報収集が判明した場合は、速やかに削除します。
-    </p>
+      <h2>第8条　データの削除</h2>
+      <p>
+        ユーザーは本アプリ内の「アカウント削除」機能から、いつでも自身のアカウントおよびすべての関連データを削除できます。
+        削除されたデータは原則として復元できません。
+      </p>
+      <p>
+        データ削除に関するお問い合わせは
+        <a href="mailto:support@mineria-labs.com">support@mineria-labs.com</a> までご連絡ください。
+      </p>
 
-    <h2>第10条　セキュリティ</h2>
-    <p>
-      当社は、収集した個人情報を適切な技術的・組織的措置によって保護します。
-      ただし、インターネット上でのデータ送受信の完全な安全性を保証するものではありません。
-    </p>
+      <h2>第9条　お子様のプライバシー（COPPA）</h2>
+      <p>
+        本アプリは13歳未満の方を対象としておりません。
+        13歳未満の方の個人情報を意図して収集することはありません。
+        13歳未満のユーザーからの個人情報収集が判明した場合は、速やかに削除します。
+      </p>
 
-    <h2>第11条　ポリシーの変更</h2>
-    <p>
-      本ポリシーは法令の改正・サービスの変更等に応じて改定されることがあります。
-      重要な変更が生じた場合は、本アプリ内またはウェブサイト上での告知により通知します。
-      変更後も継続して本アプリを利用された場合は、改定後のポリシーに同意したものとみなします。
-    </p>
+      <h2>第10条　セキュリティ</h2>
+      <p>
+        当社は、収集した個人情報を適切な技術的・組織的措置によって保護します。
+        ただし、インターネット上でのデータ送受信の完全な安全性を保証するものではありません。
+      </p>
 
-    <h2>第12条　お問い合わせ</h2>
-    <p>本ポリシーに関するご質問・ご意見は以下にお寄せください。</p>
+      <h2>第11条　ポリシーの変更</h2>
+      <p>
+        本ポリシーは法令の改正・サービスの変更等に応じて改定されることがあります。
+        重要な変更が生じた場合は、本アプリ内またはウェブサイト上での告知により通知します。
+        変更後も継続して本アプリを利用された場合は、改定後のポリシーに同意したものとみなします。
+      </p>
 
-    <div class="info-box">
-      <p><strong>Mineria Labs</strong></p>
-      <p>〒101-0051 東京都千代田区神田神保町3丁目11番6号 神保町ビル10階</p>
-      <p>電話：090-4130-7404</p>
-      <p>メール：<a href="mailto:support@mineria-labs.com">support@mineria-labs.com</a></p>
-    </div>
+      <h2>第12条　お問い合わせ</h2>
+      <p>本ポリシーに関するご質問・ご意見は以下にお寄せください。</p>
+
+      <div class="info-box">
+        <p><strong>Mineria Labs</strong></p>
+        <p>〒101-0051 東京都千代田区神田神保町3丁目11番6号 神保町ビル10階</p>
+        <p>電話：090-4130-7404</p>
+        <p>メール：<a href="mailto:support@mineria-labs.com">support@mineria-labs.com</a></p>
+      </div>
+    </div><!-- /#content-ja -->
+
+    <!-- ── English Content ── -->
+    <div id="content-en" style="display:none">
+      <div class="doc-header">
+        <p class="doc-label">Legal</p>
+        <h1>Privacy Policy</h1>
+        <p class="doc-date">Established: April 1, 2026 &nbsp;·&nbsp; Last updated: April 11, 2026</p>
+      </div>
+
+      <p>
+        Mineria Labs ("we," "us," or "our") is committed to protecting the privacy and personal information
+        of users of the mobile application "Mineria" (the "App"). This Privacy Policy ("Policy") describes
+        how we collect, use, and handle your information when you use our App.
+      </p>
+
+      <h2>Article 1 — Information We Collect</h2>
+
+      <h3>1-1. Account Registration Information</h3>
+      <p>When you create an account, we collect the following information.</p>
+      <ul>
+        <li>Email address (for email-based authentication)</li>
+        <li>Google account profile information (for Google Sign-In)</li>
+        <li>Display name / nickname (optional)</li>
+        <li>Profile picture (optional upload)</li>
+      </ul>
+
+      <h3>1-2. Collection Data</h3>
+      <p>While you use the App, we collect and store the following data that you enter.</p>
+      <ul>
+        <li>Specimen photos and video files</li>
+        <li>Mineral name, locality, and physical data (hardness, size, weight, etc.)</li>
+        <li>Purchase price and acquisition details (private fields, visible only to you)</li>
+        <li>Public notes and private notes</li>
+      </ul>
+
+      <h3>1-3. Usage Logs &amp; Technical Information</h3>
+      <ul>
+        <li>AI identification usage count and timestamps</li>
+        <li>App crash logs and error logs (Firebase Crashlytics)</li>
+        <li>Device identifier (used solely to manage AI usage limits in guest mode)</li>
+      </ul>
+
+      <h2>Article 2 — How We Use Your Information</h2>
+      <p>We use the information collected solely for the following purposes.</p>
+      <ul>
+        <li>Providing and operating the App's services</li>
+        <li>Managing and authenticating user accounts</li>
+        <li>Providing the AI automatic identification feature</li>
+        <li>Cloud backup of collection data (Premium Plan only)</li>
+        <li>Improving the service and developing new features</li>
+        <li>Detecting and preventing fraudulent use</li>
+        <li>Responding to inquiries</li>
+        <li>Complying with legal obligations</li>
+      </ul>
+
+      <h2>Article 3 — Sharing with Third Parties</h2>
+      <p>
+        We will not provide or disclose your personal information to third parties except in the following cases.
+      </p>
+      <ul>
+        <li>With your explicit consent</li>
+        <li>When required by law (e.g., court orders or government authority requests)</li>
+        <li>When necessary to protect the life, body, or property of a person</li>
+      </ul>
+
+      <h2>Article 4 — Third-Party Services We Use</h2>
+      <p>The App uses the following third-party services. Their respective privacy policies may apply.</p>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Service</th>
+            <th>Purpose</th>
+            <th>Provider</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Firebase Authentication</td><td>User authentication</td><td>Google LLC</td></tr>
+          <tr><td>Cloud Firestore</td><td>Data storage</td><td>Google LLC</td></tr>
+          <tr><td>Firebase Storage</td><td>Photo and video file storage</td><td>Google LLC</td></tr>
+          <tr><td>Firebase Crashlytics</td><td>Crash report collection</td><td>Google LLC</td></tr>
+          <tr><td>Gemini API (Vertex AI)</td><td>AI mineral identification</td><td>Google LLC</td></tr>
+          <tr><td>Google Sign-In</td><td>Google authentication</td><td>Google LLC</td></tr>
+        </tbody>
+      </table>
+
+      <p>
+        For Google's privacy policy, please visit
+        <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">https://policies.google.com/privacy</a>.
+      </p>
+
+      <h2>Article 5 — Private Fields</h2>
+      <p>
+        The following fields in specimen data are treated as "private fields" and will never be
+        displayed or transmitted to any party other than the account owner.
+      </p>
+      <ul>
+        <li>Purchase price, source, and acquisition date</li>
+        <li>Sale price, buyer, and date of sale</li>
+        <li>Private notes</li>
+        <li>Management / catalog number</li>
+      </ul>
+      <p>
+        Even when a specimen is set to "public," the private fields listed above will not be
+        transmitted to other users.
+      </p>
+
+      <h2>Article 6 — Likes &amp; Follows</h2>
+      <p>
+        Information related to the like and follow features (e.g., who liked a specimen, who follows whom)
+        is stored for internal management purposes only and will never be displayed in any other user's UI.
+      </p>
+
+      <h2>Article 7 — Data Retention</h2>
+      <ul>
+        <li>Account data and specimen data: retained until the account is deleted</li>
+        <li>Guest (anonymous authentication) data: may be lost upon app deletion or device change</li>
+        <li>Inquiry records: retained for 3 years after the inquiry is resolved</li>
+      </ul>
+
+      <h2>Article 8 — Data Deletion</h2>
+      <p>
+        You may delete your account and all associated data at any time using the "Delete Account"
+        feature within the App. Deleted data cannot generally be restored.
+      </p>
+      <p>
+        For questions about data deletion, please contact us at
+        <a href="mailto:support@mineria-labs.com">support@mineria-labs.com</a>.
+      </p>
+
+      <h2>Article 9 — Children's Privacy (COPPA)</h2>
+      <p>
+        The App is not intended for children under the age of 13. We do not knowingly collect
+        personal information from children under 13. If we discover that we have inadvertently
+        collected such information, we will promptly delete it.
+      </p>
+
+      <h2>Article 10 — Security</h2>
+      <p>
+        We protect the personal information we collect using appropriate technical and organizational
+        measures. However, we cannot guarantee the complete security of data transmission over the internet.
+      </p>
+
+      <h2>Article 11 — Changes to This Policy</h2>
+      <p>
+        This Policy may be updated in response to changes in law or our services. If significant changes
+        are made, we will notify you via an announcement in the App or on our website. Continued use of
+        the App after such changes constitutes your acceptance of the revised Policy.
+      </p>
+
+      <h2>Article 12 — Contact</h2>
+      <p>If you have any questions or comments about this Policy, please contact us.</p>
+
+      <div class="info-box">
+        <p><strong>Mineria Labs</strong></p>
+        <p>Jimbocho Bldg. 10F, 3-11-6 Kanda-Jinbocho, Chiyoda-ku, Tokyo 101-0051, Japan</p>
+        <p>Phone: +81-90-4130-7404</p>
+        <p>Email: <a href="mailto:support@mineria-labs.com">support@mineria-labs.com</a></p>
+      </div>
+    </div><!-- /#content-en -->
 
   </main>
 
   <footer>
-    <nav class="footer-links">
-      <a href="index.html">トップ</a>
-      <a href="privacy.html">プライバシーポリシー</a>
-      <a href="terms.html">利用規約</a>
-      <a href="mailto:support@mineria-labs.com">お問い合わせ</a>
-    </nav>
+    <div class="footer-links">
+      <a href="index.html" id="footer-top">トップ</a>
+      <a href="privacy.html" id="footer-privacy">プライバシーポリシー</a>
+      <a href="terms.html" id="footer-terms">利用規約</a>
+      <a href="mailto:support@mineria-labs.com" id="footer-contact">お問い合わせ</a>
+    </div>
     <p class="footer-copy">© 2026 Mineria Labs. All rights reserved.</p>
   </footer>
+
+  <script>
+    const footerLabels = {
+      ja: { back: '← トップに戻る', top: 'トップ', privacy: 'プライバシーポリシー', terms: '利用規約', contact: 'お問い合わせ' },
+      en: { back: '← Back to Top',  top: 'Home',  privacy: 'Privacy Policy',      terms: 'Terms of Service', contact: 'Contact' },
+    };
+
+    function setLang(lang) {
+      const isEn = lang === 'en';
+      document.getElementById('content-ja').style.display = isEn ? 'none' : '';
+      document.getElementById('content-en').style.display = isEn ? '' : 'none';
+      document.documentElement.lang = lang;
+      document.title = isEn ? 'Privacy Policy — Mineria' : 'プライバシーポリシー — Mineria';
+
+      const lb = footerLabels[lang];
+      document.getElementById('nav-back-link').textContent  = lb.back;
+      document.getElementById('footer-top').textContent     = lb.top;
+      document.getElementById('footer-privacy').textContent = lb.privacy;
+      document.getElementById('footer-terms').textContent   = lb.terms;
+      document.getElementById('footer-contact').textContent = lb.contact;
+
+      document.querySelectorAll('.lang-btn').forEach(btn => {
+        btn.classList.toggle('active', btn.dataset.lang === lang);
+      });
+
+      localStorage.setItem('mineria_lang', lang);
+    }
+
+    // Sync with saved preference
+    (function () {
+      const saved = localStorage.getItem('mineria_lang');
+      if (saved && saved !== 'ja') setLang(saved);
+    })();
+  </script>
 
 </body>
 </html>

@@ -62,12 +62,52 @@
       color: var(--gold);
     }
 
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
     .nav-back {
       font-size: 0.82rem;
       color: var(--text-dim);
       transition: color 0.2s;
     }
     .nav-back:hover { color: var(--gold); }
+
+    /* ── Language Switcher ── */
+    .lang-switcher {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 3px;
+    }
+
+    .lang-btn {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      padding: 5px 10px;
+      border: none;
+      border-radius: 5px;
+      background: transparent;
+      color: var(--text-dim);
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      cursor: pointer;
+      transition: background 0.15s, color 0.15s;
+      font-family: 'Noto Sans JP', sans-serif;
+      line-height: 1;
+    }
+
+    .lang-btn .flag { font-size: 1rem; line-height: 1; }
+    .lang-btn:hover { color: var(--text); }
+    .lang-btn.active { background: var(--gold); color: #0b0b12; }
+    .lang-btn.active:hover { background: var(--gold-light); }
 
     /* ── Main ── */
     main {
@@ -282,6 +322,7 @@
       main { padding: 40px 16px; }
       .form-card { padding: 28px 20px 24px; }
       .form-header h1 { font-size: 1.9rem; }
+      .lang-btn { padding: 4px 7px; }
     }
   </style>
 </head>
@@ -290,7 +331,17 @@
   <!-- Nav -->
   <nav>
     <a href="index.html" class="nav-logo">Mineria</a>
-    <a href="index.html" class="nav-back">← トップに戻る</a>
+    <div class="nav-right">
+      <a href="index.html" class="nav-back" id="nav-back-link">← トップに戻る</a>
+      <div class="lang-switcher" role="group" aria-label="Language">
+        <button class="lang-btn active" data-lang="ja" onclick="setLang('ja')">
+          <span class="flag">🇯🇵</span> JA
+        </button>
+        <button class="lang-btn" data-lang="en" onclick="setLang('en')">
+          <span class="flag">🇺🇸</span> EN
+        </button>
+      </div>
+    </div>
   </nav>
 
   <!-- Main -->
@@ -299,8 +350,8 @@
 
       <div class="form-header">
         <p class="form-eyebrow">Contact</p>
-        <h1>お問い合わせ</h1>
-        <p>ご質問・バグ報告・機能リクエスト・法人連携など、お気軽にお問い合わせください。<br />通常2〜3営業日以内に返信いたします。</p>
+        <h1 id="page-title">お問い合わせ</h1>
+        <p id="page-desc">ご質問・バグ報告・機能リクエスト・法人連携など、お気軽にお問い合わせください。<br />通常2〜3営業日以内に返信いたします。</p>
       </div>
 
       <!-- Alert messages -->
@@ -317,8 +368,8 @@
           <!-- お名前 -->
           <div class="field">
             <label for="name">
-              お名前
-              <span class="required">（必須）</span>
+              <span id="label-name">お名前</span>
+              <span class="required" id="req1">（必須）</span>
             </label>
             <input
               type="text"
@@ -333,8 +384,8 @@
           <!-- メールアドレス -->
           <div class="field">
             <label for="email">
-              メールアドレス
-              <span class="required">（必須）</span>
+              <span id="label-email">メールアドレス</span>
+              <span class="required" id="req2">（必須）</span>
             </label>
             <input
               type="email"
@@ -348,23 +399,23 @@
 
           <!-- お問い合わせ種別 -->
           <div class="field">
-            <label for="category">お問い合わせ種別</label>
+            <label for="category"><span id="label-category">お問い合わせ種別</span></label>
             <select id="category" name="category">
-              <option value="">選択してください</option>
-              <option value="bug">バグ・不具合の報告</option>
-              <option value="feature">機能リクエスト</option>
-              <option value="account">アカウント・課金について</option>
-              <option value="press">プレス・取材</option>
-              <option value="business">法人連携・提携</option>
-              <option value="other">その他</option>
+              <option value="" id="opt-placeholder">選択してください</option>
+              <option value="bug" id="opt-bug">バグ・不具合の報告</option>
+              <option value="feature" id="opt-feature">機能リクエスト</option>
+              <option value="account" id="opt-account">アカウント・課金について</option>
+              <option value="press" id="opt-press">プレス・取材</option>
+              <option value="business" id="opt-business">法人連携・提携</option>
+              <option value="other" id="opt-other">その他</option>
             </select>
           </div>
 
           <!-- お問い合わせ内容 -->
           <div class="field">
             <label for="message">
-              お問い合わせ内容
-              <span class="required">（必須）</span>
+              <span id="label-message">お問い合わせ内容</span>
+              <span class="required" id="req3">（必須）</span>
             </label>
             <textarea
               id="message"
@@ -374,7 +425,7 @@
             ></textarea>
           </div>
 
-          <!-- Formspree のスパム対策（hidden field） -->
+          <!-- スパム対策（hidden field） -->
           <input type="text" name="_gotcha" style="display:none" />
 
           <button type="submit" class="submit-btn" id="submitBtn">
@@ -384,7 +435,7 @@
         </form>
       </div>
 
-      <p class="form-note">
+      <p class="form-note" id="form-note">
         または直接メールでご連絡いただくこともできます：
         <a href="mailto:support@mineria-labs.com">support@mineria-labs.com</a>
       </p>
@@ -395,15 +446,126 @@
   <!-- Footer -->
   <footer>
     <nav class="footer-links">
-      <a href="index.html">トップ</a>
-      <a href="privacy.html">プライバシーポリシー</a>
-      <a href="terms.html">利用規約</a>
-      <a href="contact.html">お問い合わせ</a>
+      <a href="index.html" id="footer-top">トップ</a>
+      <a href="privacy.html" id="footer-privacy">プライバシーポリシー</a>
+      <a href="terms.html" id="footer-terms">利用規約</a>
+      <a href="contact.html" id="footer-contact">お問い合わせ</a>
     </nav>
     <p class="footer-copy">© 2026 Mineria Labs. All rights reserved.</p>
   </footer>
 
   <script>
+    // ── i18n ──
+    const i18n = {
+      ja: {
+        title:        'お問い合わせ — Mineria',
+        back:         '← トップに戻る',
+        pageTitle:    'お問い合わせ',
+        pageDesc:     'ご質問・バグ報告・機能リクエスト・法人連携など、お気軽にお問い合わせください。\n通常2〜3営業日以内に返信いたします。',
+        labelName:    'お名前',
+        req:          '（必須）',
+        namePh:       '山田 太郎',
+        labelEmail:   'メールアドレス',
+        labelCategory:'お問い合わせ種別',
+        optPh:        '選択してください',
+        optBug:       'バグ・不具合の報告',
+        optFeature:   '機能リクエスト',
+        optAccount:   'アカウント・課金について',
+        optPress:     'プレス・取材',
+        optBusiness:  '法人連携・提携',
+        optOther:     'その他',
+        labelMessage: 'お問い合わせ内容',
+        messagePh:    'お問い合わせ内容をご記入ください',
+        submitBtn:    '送信する',
+        submitLoading:'送信中…',
+        alertSuccess: '✓ メッセージを送信しました。2〜3営業日以内にご返信いたします。',
+        alertError:   '✗ 送信に失敗しました。しばらくしてから再度お試しいただくか、直接 support@mineria-labs.com までご連絡ください。',
+        formNote:     'または直接メールでご連絡いただくこともできます：',
+        footerTop:    'トップ',
+        footerPrivacy:'プライバシーポリシー',
+        footerTerms:  '利用規約',
+        footerContact:'お問い合わせ',
+      },
+      en: {
+        title:        'Contact — Mineria',
+        back:         '← Back to Top',
+        pageTitle:    'Contact',
+        pageDesc:     'Feel free to reach out with questions, bug reports, feature requests, or business inquiries.\nWe typically reply within 2–3 business days.',
+        labelName:    'Name',
+        req:          ' (required)',
+        namePh:       'Jane Smith',
+        labelEmail:   'Email Address',
+        labelCategory:'Inquiry Type',
+        optPh:        'Select an option',
+        optBug:       'Bug / Issue Report',
+        optFeature:   'Feature Request',
+        optAccount:   'Account / Billing',
+        optPress:     'Press / Media',
+        optBusiness:  'Business Partnership',
+        optOther:     'Other',
+        labelMessage: 'Message',
+        messagePh:    'Please describe your inquiry',
+        submitBtn:    'Send Message',
+        submitLoading:'Sending…',
+        alertSuccess: '✓ Your message has been sent. We will reply within 2–3 business days.',
+        alertError:   '✗ Failed to send. Please try again later or contact us directly at support@mineria-labs.com.',
+        formNote:     'Or contact us directly at:',
+        footerTop:    'Home',
+        footerPrivacy:'Privacy Policy',
+        footerTerms:  'Terms of Service',
+        footerContact:'Contact',
+      },
+    };
+
+    function setLang(lang) {
+      const t = i18n[lang];
+      document.documentElement.lang = lang;
+      document.title = t.title;
+
+      document.getElementById('nav-back-link').textContent   = t.back;
+      document.getElementById('page-title').textContent      = t.pageTitle;
+
+      const desc = document.getElementById('page-desc');
+      desc.innerHTML = t.pageDesc.replace(/\n/g, '<br />');
+
+      document.getElementById('label-name').textContent      = t.labelName;
+      document.getElementById('req1').textContent            = t.req;
+      document.getElementById('req2').textContent            = t.req;
+      document.getElementById('req3').textContent            = t.req;
+      document.getElementById('label-email').textContent     = t.labelEmail;
+      document.getElementById('label-category').textContent  = t.labelCategory;
+      document.getElementById('label-message').textContent   = t.labelMessage;
+
+      document.getElementById('opt-placeholder').textContent = t.optPh;
+      document.getElementById('opt-bug').textContent         = t.optBug;
+      document.getElementById('opt-feature').textContent     = t.optFeature;
+      document.getElementById('opt-account').textContent     = t.optAccount;
+      document.getElementById('opt-press').textContent       = t.optPress;
+      document.getElementById('opt-business').textContent    = t.optBusiness;
+      document.getElementById('opt-other').textContent       = t.optOther;
+
+      document.getElementById('name').placeholder    = t.namePh;
+      document.getElementById('message').placeholder = t.messagePh;
+
+      const submitBtn = document.getElementById('submitBtn');
+      if (!submitBtn.disabled) submitBtn.textContent = t.submitBtn;
+
+      document.getElementById('form-note').innerHTML =
+        t.formNote + ' <a href="mailto:support@mineria-labs.com">support@mineria-labs.com</a>';
+
+      document.getElementById('footer-top').textContent     = t.footerTop;
+      document.getElementById('footer-privacy').textContent = t.footerPrivacy;
+      document.getElementById('footer-terms').textContent   = t.footerTerms;
+      document.getElementById('footer-contact').textContent = t.footerContact;
+
+      document.querySelectorAll('.lang-btn').forEach(btn => {
+        btn.classList.toggle('active', btn.dataset.lang === lang);
+      });
+
+      localStorage.setItem('mineria_lang', lang);
+    }
+
+    // ── Form submission ──
     const form = document.getElementById('contactForm');
     const submitBtn = document.getElementById('submitBtn');
     const alertSuccess = document.getElementById('alertSuccess');
@@ -412,8 +574,11 @@
     form.addEventListener('submit', async (e) => {
       e.preventDefault();
 
+      const lang = localStorage.getItem('mineria_lang') || 'ja';
+      const t = i18n[lang];
+
       submitBtn.disabled = true;
-      submitBtn.textContent = '送信中…';
+      submitBtn.textContent = t.submitLoading;
       alertSuccess.classList.remove('show');
       alertError.classList.remove('show');
 
@@ -433,7 +598,6 @@
           headers: { 'Content-Type': 'application/json' }
         });
 
-        // レスポンスをテキストで受け取り、JSONパースを安全に行う
         const raw = await response.text();
         console.debug('[contact] status:', response.status, 'body:', raw);
 
@@ -441,11 +605,11 @@
         try {
           data = JSON.parse(raw);
         } catch {
-          // JSON でない = Worker未デプロイ or サーバーエラー
-          throw new Error(`サーバーエラー (HTTP ${response.status}) — ログを確認してください`);
+          throw new Error(`サーバーエラー (HTTP ${response.status})`);
         }
 
         if (response.ok && data.ok) {
+          alertSuccess.textContent = t.alertSuccess;
           alertSuccess.classList.add('show');
           form.reset();
           alertSuccess.scrollIntoView({ behavior: 'smooth', block: 'center' });
@@ -453,14 +617,20 @@
           throw new Error(data.error || `送信失敗 (${response.status})`);
         }
       } catch (err) {
-        alertError.textContent = `✗ ${err.message || '送信に失敗しました。しばらくしてから再度お試しください。'}`;
+        alertError.textContent = `✗ ${err.message}`;
         alertError.classList.add('show');
         alertError.scrollIntoView({ behavior: 'smooth', block: 'center' });
       } finally {
         submitBtn.disabled = false;
-        submitBtn.textContent = '送信する';
+        submitBtn.textContent = t.submitBtn;
       }
     });
+
+    // ── Init ──
+    (function () {
+      const saved = localStorage.getItem('mineria_lang');
+      if (saved && saved !== 'ja') setLang(saved);
+    })();
   </script>
 
 </body>

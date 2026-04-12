@@ -77,6 +77,12 @@
       letter-spacing: 0.08em;
     }
 
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+    }
+
     .nav-links {
       display: flex;
       gap: 32px;
@@ -103,6 +109,53 @@
     }
 
     .nav-cta:hover { background: var(--gold-light) !important; color: #0b0b12 !important; }
+
+    /* ── Language Switcher ── */
+    .lang-switcher {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 3px;
+    }
+
+    .lang-btn {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      padding: 5px 10px;
+      border: none;
+      border-radius: 5px;
+      background: transparent;
+      color: var(--text-dim);
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      cursor: pointer;
+      transition: background 0.15s, color 0.15s;
+      font-family: 'Noto Sans JP', sans-serif;
+      line-height: 1;
+    }
+
+    .lang-btn .flag {
+      font-size: 1rem;
+      line-height: 1;
+    }
+
+    .lang-btn:hover {
+      color: var(--text);
+    }
+
+    .lang-btn.active {
+      background: var(--gold);
+      color: #0b0b12;
+    }
+
+    .lang-btn.active:hover {
+      background: var(--gold-light);
+    }
 
     /* ── Hero ── */
     .hero {
@@ -617,6 +670,7 @@
     @media (max-width: 768px) {
       nav { padding: 14px 20px; }
       .nav-links { display: none; }
+      .nav-right { gap: 12px; }
 
       .hero { padding: 100px 20px 60px; }
 
@@ -636,6 +690,7 @@
       .hero h1 { font-size: 2.4rem; }
       .plan-card { padding: 28px 20px; }
       .feature-card { padding: 28px 20px; }
+      .lang-btn { padding: 4px 7px; }
     }
   </style>
 </head>
@@ -646,26 +701,37 @@
     <div class="nav-logo">
       Mineria<span>by Mineria Labs</span>
     </div>
-    <ul class="nav-links">
-      <li><a href="#features">機能</a></li>
-      <li><a href="#plans">プラン</a></li>
-      <li><a href="#about">会社概要</a></li>
-      <li><a href="contact.html" class="nav-cta">お問い合わせ</a></li>
-    </ul>
+    <div class="nav-right">
+      <ul class="nav-links">
+        <li><a href="#features" data-i18n="nav_features">機能</a></li>
+        <li><a href="#plans" data-i18n="nav_plans">プラン</a></li>
+        <li><a href="#about" data-i18n="nav_about">会社概要</a></li>
+        <li><a href="contact.html" class="nav-cta" data-i18n="nav_contact">お問い合わせ</a></li>
+      </ul>
+      <!-- Language Switcher -->
+      <div class="lang-switcher" role="group" aria-label="Language">
+        <button class="lang-btn active" data-lang="ja" onclick="setLang('ja')">
+          <span class="flag">🇯🇵</span> JA
+        </button>
+        <button class="lang-btn" data-lang="en" onclick="setLang('en')">
+          <span class="flag">🇺🇸</span> EN
+        </button>
+      </div>
+    </div>
   </nav>
 
   <!-- ── Hero ── -->
   <section class="hero" id="top">
     <div class="crystal-bg"></div>
 
-    <div class="hero-eyebrow">鉱物標本コレクションアプリ</div>
+    <div class="hero-eyebrow" data-i18n="hero_eyebrow">鉱物標本コレクションアプリ</div>
 
-    <h1>
+    <h1 data-i18n="hero_h1">
       あなたの標本を、<br />
       <strong>美しく記録・共有。</strong>
     </h1>
 
-    <p class="hero-sub">
+    <p class="hero-sub" data-i18n="hero_sub">
       AI自動識別・コレクション管理・ギャラリー共有機能を備えた、<br />
       鉱物標本コレクター専用のモバイルアプリです。
     </p>
@@ -696,15 +762,15 @@
     <div class="hero-stats">
       <div class="stat">
         <div class="stat-num">∞</div>
-        <div class="stat-label">標本登録数</div>
+        <div class="stat-label" data-i18n="stat_specimens">標本登録数</div>
       </div>
       <div class="stat">
         <div class="stat-num">AI</div>
-        <div class="stat-label">鉱物自動識別</div>
+        <div class="stat-label" data-i18n="stat_ai">鉱物自動識別</div>
       </div>
       <div class="stat">
         <div class="stat-num">3</div>
-        <div class="stat-label">識別候補 + 信頼度</div>
+        <div class="stat-label" data-i18n="stat_candidates">識別候補 + 信頼度</div>
       </div>
     </div>
   </section>
@@ -714,41 +780,41 @@
     <div class="section-inner">
       <p class="section-label">Features</p>
       <div class="gold-line"></div>
-      <h2 class="section-title">コレクターのための<br /><strong>3つの柱</strong></h2>
-      <p class="section-desc">標本を記録し、識別し、世界に届ける。すべての機能がコレクターのために設計されています。</p>
+      <h2 class="section-title" data-i18n="feat_title">コレクターのための<br /><strong>3つの柱</strong></h2>
+      <p class="section-desc" data-i18n="feat_desc">標本を記録し、識別し、世界に届ける。すべての機能がコレクターのために設計されています。</p>
 
       <div class="features-grid">
         <!-- Card 1 -->
         <div class="feature-card">
           <div class="feature-icon">🪨</div>
-          <h3>コレクション管理</h3>
-          <p>
+          <h3 data-i18n="feat1_title">コレクション管理</h3>
+          <p data-i18n="feat1_body">
             写真・産地・鉱物名・物理データ（結晶系・硬度・劈開・サイズ・重量）をまとめて記録。
             和名・英名両対応のインクリメンタルサーチで鉱物名を素早く入力できます。
           </p>
-          <div class="feature-tag">無料で利用可能</div>
+          <div class="feature-tag" data-i18n="feat1_tag">無料で利用可能</div>
         </div>
 
         <!-- Card 2 -->
         <div class="feature-card">
           <div class="feature-icon">✨</div>
-          <h3>AI 自動識別</h3>
-          <p>
+          <h3 data-i18n="feat2_title">AI 自動識別</h3>
+          <p data-i18n="feat2_body">
             写真を撮るだけで Gemini AI が鉱物を自動識別。信頼度付きの候補を最大3件表示します。
             信頼度が低い場合は警告を表示し、誤識別を防ぎます。
           </p>
-          <div class="feature-tag">月5回まで無料</div>
+          <div class="feature-tag" data-i18n="feat2_tag">月5回まで無料</div>
         </div>
 
         <!-- Card 3 -->
         <div class="feature-card">
           <div class="feature-icon">🔭</div>
-          <h3>コミュニティギャラリー</h3>
-          <p>
+          <h3 data-i18n="feat3_title">コミュニティギャラリー</h3>
+          <p data-i18n="feat3_body">
             世界中のコレクターの標本を鑑賞できるギャラリー。いいね・フォロー機能で
             お気に入りのコレクターを見つけましょう。コメントやDMはなく、鑑賞に特化したシンプルな設計です。
           </p>
-          <div class="feature-tag">アカウント登録で利用可能</div>
+          <div class="feature-tag" data-i18n="feat3_tag">アカウント登録で利用可能</div>
         </div>
       </div>
     </div>
@@ -759,43 +825,43 @@
     <div class="section-inner">
       <p class="section-label">Pricing</p>
       <div class="gold-line"></div>
-      <h2 class="section-title">シンプルな<br /><strong>2プラン</strong></h2>
-      <p class="section-desc">まずは無料からはじめて、もっと活用したいときにアップグレード。</p>
+      <h2 class="section-title" data-i18n="plans_title">シンプルな<br /><strong>2プラン</strong></h2>
+      <p class="section-desc" data-i18n="plans_desc">まずは無料からはじめて、もっと活用したいときにアップグレード。</p>
 
       <div class="plans-grid">
         <!-- Free Plan -->
         <div class="plan-card">
-          <p class="plan-name">無料プラン</p>
-          <div class="plan-price">¥0<span> / 月</span></div>
+          <p class="plan-name" data-i18n="plan_free_name">無料プラン</p>
+          <div class="plan-price">¥0<span data-i18n="plan_per_month"> / 月</span></div>
           <p class="plan-trial">&nbsp;</p>
           <div class="plan-divider"></div>
           <ul class="plan-features">
-            <li class="active"><span class="check">✓</span>標本登録 無制限</li>
-            <li class="active"><span class="check">✓</span>写真 3枚 / 標本</li>
-            <li class="active"><span class="check">✓</span>AI自動識別 月5回</li>
-            <li class="active"><span class="check">✓</span>公開・いいね・フォロー</li>
-            <li class="active"><span class="check">✓</span>ギャラリー閲覧</li>
-            <li><span class="cross">✗</span>写真10枚 / 標本</li>
-            <li><span class="cross">✗</span>AI識別 月100回</li>
-            <li><span class="cross">✗</span>クラウドバックアップ</li>
+            <li class="active"><span class="check">✓</span><span data-i18n="pf_unlimited">標本登録 無制限</span></li>
+            <li class="active"><span class="check">✓</span><span data-i18n="pf_photo3">写真 3枚 / 標本</span></li>
+            <li class="active"><span class="check">✓</span><span data-i18n="pf_ai5">AI自動識別 月5回</span></li>
+            <li class="active"><span class="check">✓</span><span data-i18n="pf_social">公開・いいね・フォロー</span></li>
+            <li class="active"><span class="check">✓</span><span data-i18n="pf_gallery">ギャラリー閲覧</span></li>
+            <li><span class="cross">✗</span><span data-i18n="pf_photo10">写真10枚 / 標本</span></li>
+            <li><span class="cross">✗</span><span data-i18n="pf_ai100">AI識別 月100回</span></li>
+            <li><span class="cross">✗</span><span data-i18n="pf_backup">クラウドバックアップ</span></li>
           </ul>
         </div>
 
         <!-- Premium Plan -->
         <div class="plan-card featured">
-          <div class="plan-badge">おすすめ</div>
-          <p class="plan-name">プレミアムプラン</p>
-          <div class="plan-price">¥500<span> / 月</span></div>
-          <p class="plan-trial">🎁 初回2ヶ月間 無料トライアル</p>
+          <div class="plan-badge" data-i18n="plan_badge">おすすめ</div>
+          <p class="plan-name" data-i18n="plan_premium_name">プレミアムプラン</p>
+          <div class="plan-price">¥500<span data-i18n="plan_per_month2"> / 月</span></div>
+          <p class="plan-trial" data-i18n="plan_trial">🎁 初回2ヶ月間 無料トライアル</p>
           <div class="plan-divider"></div>
           <ul class="plan-features">
-            <li class="active"><span class="check">✓</span>標本登録 無制限</li>
-            <li class="active"><span class="check">✓</span>写真 <strong>10枚</strong> / 標本</li>
-            <li class="active"><span class="check">✓</span>AI自動識別 <strong>月100回</strong></li>
-            <li class="active"><span class="check">✓</span>公開・いいね・フォロー</li>
-            <li class="active"><span class="check">✓</span>ギャラリー閲覧</li>
-            <li class="active"><span class="check">✓</span><strong>クラウドバックアップ</strong></li>
-            <li class="active"><span class="check">✓</span>関連リンク掲載</li>
+            <li class="active"><span class="check">✓</span><span data-i18n="pf_unlimited2">標本登録 無制限</span></li>
+            <li class="active"><span class="check">✓</span><span data-i18n="pf_photo10p">写真 <strong>10枚</strong> / 標本</span></li>
+            <li class="active"><span class="check">✓</span><span data-i18n="pf_ai100p">AI自動識別 <strong>月100回</strong></span></li>
+            <li class="active"><span class="check">✓</span><span data-i18n="pf_social2">公開・いいね・フォロー</span></li>
+            <li class="active"><span class="check">✓</span><span data-i18n="pf_gallery2">ギャラリー閲覧</span></li>
+            <li class="active"><span class="check">✓</span><span data-i18n="pf_backupp"><strong>クラウドバックアップ</strong></span></li>
+            <li class="active"><span class="check">✓</span><span data-i18n="pf_links">関連リンク掲載</span></li>
           </ul>
         </div>
       </div>
@@ -807,18 +873,18 @@
     <div class="section-inner">
       <p class="section-label">Company</p>
       <div class="gold-line"></div>
-      <h2 class="section-title">Mineria <strong>Labs</strong> について</h2>
+      <h2 class="section-title" data-i18n="about_title">Mineria <strong>Labs</strong> について</h2>
 
       <div class="about-grid">
         <div class="about-text">
-          <p>
+          <p data-i18n="about_p1">
             Mineria Labs は、鉱物標本コレクターの体験をよりリッチにすることを使命とする個人事業です。
           </p>
-          <p>
+          <p data-i18n="about_p2">
             「鉱物の美しさを、もっと多くの人に届けたい」——そんな思いからアプリ開発を始めました。
             AI識別技術と使いやすいUIを組み合わせることで、初心者からベテランコレクターまでが楽しめるプラットフォームを目指しています。
           </p>
-          <p>
+          <p data-i18n="about_p3">
             ご意見・ご要望・法人連携のお問い合わせは、下記よりお気軽にご連絡ください。
           </p>
         </div>
@@ -826,27 +892,27 @@
         <div>
           <table class="company-table">
             <tr>
-              <td>屋号</td>
+              <td data-i18n="co_name_label">屋号</td>
               <td>Mineria Labs</td>
             </tr>
             <tr>
-              <td>事業形態</td>
-              <td>個人事業主</td>
+              <td data-i18n="co_type_label">事業形態</td>
+              <td data-i18n="co_type_val">個人事業主</td>
             </tr>
             <tr>
-              <td>事業所</td>
-              <td>〒101-0051<br />東京都千代田区神田神保町<br />3丁目11番6号 神保町ビル10階</td>
+              <td data-i18n="co_addr_label">事業所</td>
+              <td data-i18n="co_addr_val">〒101-0051<br />東京都千代田区神田神保町<br />3丁目11番6号 神保町ビル10階</td>
             </tr>
             <tr>
-              <td>電話番号</td>
+              <td data-i18n="co_tel_label">電話番号</td>
               <td>090-4130-7404</td>
             </tr>
             <tr>
-              <td>メール</td>
+              <td data-i18n="co_email_label">メール</td>
               <td><a href="mailto:support@mineria-labs.com">support@mineria-labs.com</a></td>
             </tr>
             <tr>
-              <td>アプリ</td>
+              <td data-i18n="co_app_label">アプリ</td>
               <td>Mineria（iOS / Android）</td>
             </tr>
           </table>
@@ -860,19 +926,19 @@
     <div class="section-inner">
       <p class="section-label">Contact</p>
       <div class="gold-line"></div>
-      <h2 class="section-title">お問い合わせ</h2>
+      <h2 class="section-title" data-i18n="contact_title">お問い合わせ</h2>
 
       <div class="contact-box">
         <div>
-          <h3>ご質問・ご要望はフォームにてお気軽にどうぞ</h3>
-          <p>バグ報告・機能リクエスト・プレス・法人連携など、<br />通常2〜3営業日以内に返信いたします。</p>
+          <h3 data-i18n="contact_h3">ご質問・ご要望はメールにて受け付けています</h3>
+          <p data-i18n="contact_p">バグ報告・機能リクエスト・プレス・法人連携など、<br />お気軽にご連絡ください。通常2〜3営業日以内に返信いたします。</p>
         </div>
         <a href="contact.html" class="contact-email-btn">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
             <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
             <polyline points="22,6 12,13 2,6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
           </svg>
-          お問い合わせフォームへ
+          <span data-i18n="contact_btn">お問い合せフォームへ</span>
         </a>
       </div>
     </div>
@@ -882,19 +948,203 @@
   <footer>
     <div class="footer-inner">
       <div class="footer-logo">Mineria</div>
-      <nav class="footer-links">
-        <a href="#features">機能</a>
-        <a href="#plans">プラン</a>
-        <a href="#about">会社概要</a>
-        <a href="privacy.html">プライバシーポリシー</a>
-        <a href="terms.html">利用規約</a>
-        <a href="contact.html">お問い合わせ</a>
-      </nav>
+      <div class="footer-links">
+        <a href="#features" data-i18n="nav_features">機能</a>
+        <a href="#plans" data-i18n="nav_plans">プラン</a>
+        <a href="#about" data-i18n="nav_about">会社概要</a>
+        <a href="privacy.html" data-i18n="footer_privacy">プライバシーポリシー</a>
+        <a href="terms.html" data-i18n="footer_terms">利用規約</a>
+        <a href="contact.html" data-i18n="nav_contact">お問い合わせ</a>
+      </div>
     </div>
     <div class="footer-inner">
       <p class="footer-copy">© 2026 Mineria Labs. All rights reserved.</p>
     </div>
   </footer>
+
+  <script>
+    const translations = {
+      ja: {
+        nav_features:    '機能',
+        nav_plans:       'プラン',
+        nav_about:       '会社概要',
+        nav_contact:     'お問い合わせ',
+
+        hero_eyebrow:    '鉱物標本コレクションアプリ',
+        hero_h1:         'あなたの標本を、<br /><strong>美しく記録・共有。</strong>',
+        hero_sub:        'AI自動識別・コレクション管理・ギャラリー共有機能を備えた、<br />鉱物標本コレクター専用のモバイルアプリです。',
+        stat_specimens:  '標本登録数',
+        stat_ai:         '鉱物自動識別',
+        stat_candidates: '識別候補 + 信頼度',
+
+        feat_title:  'コレクターのための<br /><strong>3つの柱</strong>',
+        feat_desc:   '標本を記録し、識別し、世界に届ける。すべての機能がコレクターのために設計されています。',
+        feat1_title: 'コレクション管理',
+        feat1_body:  '写真・産地・鉱物名・物理データ（結晶系・硬度・劈開・サイズ・重量）をまとめて記録。和名・英名両対応のインクリメンタルサーチで鉱物名を素早く入力できます。',
+        feat1_tag:   '無料で利用可能',
+        feat2_title: 'AI 自動識別',
+        feat2_body:  '写真を撮るだけで Gemini AI が鉱物を自動識別。信頼度付きの候補を最大3件表示します。信頼度が低い場合は警告を表示し、誤識別を防ぎます。',
+        feat2_tag:   '月5回まで無料',
+        feat3_title: 'コミュニティギャラリー',
+        feat3_body:  '世界中のコレクターの標本を鑑賞できるギャラリー。いいね・フォロー機能でお気に入りのコレクターを見つけましょう。コメントやDMはなく、鑑賞に特化したシンプルな設計です。',
+        feat3_tag:   'アカウント登録で利用可能',
+
+        plans_title:      'シンプルな<br /><strong>2プラン</strong>',
+        plans_desc:       'まずは無料からはじめて、もっと活用したいときにアップグレード。',
+        plan_free_name:   '無料プラン',
+        plan_per_month:   ' / 月',
+        plan_badge:       'おすすめ',
+        plan_premium_name:'プレミアムプラン',
+        plan_per_month2:  ' / 月',
+        plan_trial:       '🎁 初回2ヶ月間 無料トライアル',
+        pf_unlimited:     '標本登録 無制限',
+        pf_photo3:        '写真 3枚 / 標本',
+        pf_ai5:           'AI自動識別 月5回',
+        pf_social:        '公開・いいね・フォロー',
+        pf_gallery:       'ギャラリー閲覧',
+        pf_photo10:       '写真10枚 / 標本',
+        pf_ai100:         'AI識別 月100回',
+        pf_backup:        'クラウドバックアップ',
+        pf_unlimited2:    '標本登録 無制限',
+        pf_photo10p:      '写真 <strong>10枚</strong> / 標本',
+        pf_ai100p:        'AI自動識別 <strong>月100回</strong>',
+        pf_social2:       '公開・いいね・フォロー',
+        pf_gallery2:      'ギャラリー閲覧',
+        pf_backupp:       '<strong>クラウドバックアップ</strong>',
+        pf_links:         '関連リンク掲載',
+
+        about_title:    'Mineria <strong>Labs</strong> について',
+        about_p1:       'Mineria Labs は、鉱物標本コレクターの体験をよりリッチにすることを使命とする個人事業です。',
+        about_p2:       '「鉱物の美しさを、もっと多くの人に届けたい」——そんな思いからアプリ開発を始めました。AI識別技術と使いやすいUIを組み合わせることで、初心者からベテランコレクターまでが楽しめるプラットフォームを目指しています。',
+        about_p3:       'ご意見・ご要望・法人連携のお問い合わせは、下記よりお気軽にご連絡ください。',
+        co_name_label:  '屋号',
+        co_type_label:  '事業形態',
+        co_type_val:    '個人事業主',
+        co_addr_label:  '事業所',
+        co_addr_val:    '〒101-0051<br />東京都千代田区神田神保町<br />3丁目11番6号 神保町ビル10階',
+        co_tel_label:   '電話番号',
+        co_email_label: 'メール',
+        co_app_label:   'アプリ',
+
+        contact_title: 'お問い合わせ',
+        contact_h3:    'ご質問・ご要望はメールにて受け付けています',
+        contact_p:     'バグ報告・機能リクエスト・プレス・法人連携など、<br />お気軽にご連絡ください。通常2〜3営業日以内に返信いたします。',
+        contact_btn:   'お問い合せフォームへ',
+
+        footer_privacy: 'プライバシーポリシー',
+        footer_terms:   '利用規約',
+      },
+
+      en: {
+        nav_features:    'Features',
+        nav_plans:       'Pricing',
+        nav_about:       'About',
+        nav_contact:     'Contact',
+
+        hero_eyebrow:    'Mineral Specimen Collection App',
+        hero_h1:         'Your specimens,<br /><strong>beautifully recorded & shared.</strong>',
+        hero_sub:        'A mobile app designed exclusively for mineral specimen collectors,<br />featuring AI identification, collection management, and gallery sharing.',
+        stat_specimens:  'Specimens',
+        stat_ai:         'AI Identification',
+        stat_candidates: 'Candidates + Confidence',
+
+        feat_title:  'Three Pillars<br /><strong>for Collectors</strong>',
+        feat_desc:   'Record, identify, and share with the world. Every feature designed for collectors.',
+        feat1_title: 'Collection Management',
+        feat1_body:  'Record photos, locality, mineral name, and physical data (crystal system, hardness, cleavage, size, weight) all in one place. Incremental search with both Japanese and English names for quick entry.',
+        feat1_tag:   'Available for free',
+        feat2_title: 'AI Identification',
+        feat2_body:  'Just take a photo and Gemini AI automatically identifies the mineral. Displays up to 3 candidates with confidence scores. Shows a warning when confidence is low to prevent misidentification.',
+        feat2_tag:   'Free up to 5 times/month',
+        feat3_title: 'Community Gallery',
+        feat3_body:  'Browse specimens from collectors around the world. Use likes and follows to discover your favorite collectors. No comments or DMs — a simple design focused purely on appreciation.',
+        feat3_tag:   'Available with an account',
+
+        plans_title:      'Simple<br /><strong>2 Plans</strong>',
+        plans_desc:       'Start free, upgrade whenever you need more.',
+        plan_free_name:   'Free Plan',
+        plan_per_month:   ' / mo',
+        plan_badge:       'Recommended',
+        plan_premium_name:'Premium Plan',
+        plan_per_month2:  ' / mo',
+        plan_trial:       '🎁 First 2 months free trial',
+        pf_unlimited:     'Unlimited specimens',
+        pf_photo3:        '3 photos / specimen',
+        pf_ai5:           'AI identification 5×/month',
+        pf_social:        'Publish · Like · Follow',
+        pf_gallery:       'Gallery browsing',
+        pf_photo10:       '10 photos / specimen',
+        pf_ai100:         'AI identification 100×/month',
+        pf_backup:        'Cloud backup',
+        pf_unlimited2:    'Unlimited specimens',
+        pf_photo10p:      '<strong>10</strong> photos / specimen',
+        pf_ai100p:        'AI identification <strong>100×/month</strong>',
+        pf_social2:       'Publish · Like · Follow',
+        pf_gallery2:      'Gallery browsing',
+        pf_backupp:       '<strong>Cloud backup</strong>',
+        pf_links:         'Related links listing',
+
+        about_title:    'About Mineria <strong>Labs</strong>',
+        about_p1:       'Mineria Labs is a sole proprietorship on a mission to enrich the experience of mineral specimen collectors.',
+        about_p2:       'The app was born from a desire to share the beauty of minerals with more people. By combining AI identification with an intuitive UI, we aim to build a platform that both beginners and veteran collectors can enjoy.',
+        about_p3:       'For questions, feedback, or business inquiries, please feel free to reach out via the contact below.',
+        co_name_label:  'Trade Name',
+        co_type_label:  'Business Type',
+        co_type_val:    'Sole Proprietorship',
+        co_addr_label:  'Office',
+        co_addr_val:    'Jimbocho Bldg. 10F, 3-11-6 Kanda-Jinbocho,<br />Chiyoda-ku, Tokyo 101-0051, Japan',
+        co_tel_label:   'Phone',
+        co_email_label: 'Email',
+        co_app_label:   'App',
+
+        contact_title: 'Contact',
+        contact_h3:    'We accept inquiries by email',
+        contact_p:     'Bug reports, feature requests, press, or business partnerships —<br />feel free to reach out. We typically reply within 2–3 business days.',
+        contact_btn:   'Go to Contact Form',
+
+        footer_privacy: 'Privacy Policy',
+        footer_terms:   'Terms of Service',
+      }
+    };
+
+    function setLang(lang) {
+      const t = translations[lang];
+      if (!t) return;
+
+      // Update all data-i18n elements
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if (t[key] !== undefined) {
+          el.innerHTML = t[key];
+        }
+      });
+
+      // Update lang switcher button states
+      document.querySelectorAll('.lang-btn').forEach(btn => {
+        btn.classList.toggle('active', btn.dataset.lang === lang);
+      });
+
+      // Update html lang attribute and page title/meta
+      document.documentElement.lang = lang;
+      if (lang === 'en') {
+        document.title = 'Mineria — Mineral Specimen Collection App';
+        document.querySelector('meta[name="description"]')
+          .setAttribute('content', 'AI identification · collection management · gallery sharing. A mobile app designed exclusively for mineral specimen collectors.');
+      } else {
+        document.title = 'Mineria — 鉱物標本コレクションアプリ';
+        document.querySelector('meta[name="description"]')
+          .setAttribute('content', 'AI自動識別・コレクション管理・ギャラリー共有。鉱物標本コレクター専用のモバイルアプリ。');
+      }
+
+      localStorage.setItem('mineria_lang', lang);
+    }
+
+    // Restore saved language on load
+    (function () {
+      const saved = localStorage.getItem('mineria_lang');
+      if (saved && saved !== 'ja') setLang(saved);
+    })();
+  </script>
 
 </body>
 </html>
