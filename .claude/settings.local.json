@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(cp C:/work/mineral_app/website/index.html C:/work/mineria-labs-site/index.html)",
+      "Bash(cp C:/work/mineral_app/website/privacy.html C:/work/mineria-labs-site/privacy.html)",
+      "Bash(cp C:/work/mineral_app/website/terms.html C:/work/mineria-labs-site/terms.html)"
+    ]
+  }
+}
