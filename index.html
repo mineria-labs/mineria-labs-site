@@ -475,6 +475,15 @@
       margin-bottom: 28px;
     }
 
+    .plan-note {
+      margin-top: 20px;
+      font-size: 0.78rem;
+      color: var(--text-dim);
+      font-weight: 300;
+      text-align: center;
+      opacity: 0.7;
+    }
+
     .plan-divider {
       height: 1px;
       background: var(--border);
@@ -831,7 +840,7 @@
         <!-- Free Plan -->
         <div class="plan-card">
           <p class="plan-name" data-i18n="plan_free_name">無料プラン</p>
-          <div class="plan-price">¥0<span data-i18n="plan_per_month"> / 月</span></div>
+          <div class="plan-price" data-i18n="plan_free_price">無料</div>
           <p class="plan-trial">&nbsp;</p>
           <div class="plan-divider"></div>
           <ul class="plan-features">
@@ -848,7 +857,7 @@
         <div class="plan-card featured">
           <div class="plan-badge" data-i18n="plan_badge">おすすめ</div>
           <p class="plan-name" data-i18n="plan_premium_name">プレミアムプラン</p>
-          <div class="plan-price">¥500<span data-i18n="plan_per_month2"> / 月</span></div>
+          <div class="plan-price"><span data-i18n="plan_premium_price">¥500</span><span data-i18n="plan_per_month2"> / 月</span></div>
           <p class="plan-trial" data-i18n="plan_trial">🎁 初回30日間 無料トライアル</p>
           <div class="plan-divider"></div>
           <ul class="plan-features">
@@ -859,6 +868,7 @@
           </ul>
         </div>
       </div>
+      <p class="plan-note" data-i18n="plan_note">※ 表示価格はご参考です。実際の金額はApp Store / Google Play上でご確認ください。</p>
     </div>
   </section>
 
@@ -983,9 +993,10 @@
         plans_title:      'シンプルな<br /><strong>2プラン</strong>',
         plans_desc:       'まずは無料からはじめて、もっと活用したいときにアップグレード。',
         plan_free_name:   '無料プラン',
-        plan_per_month:   ' / 月',
+        plan_free_price:  '無料',
         plan_badge:       'おすすめ',
-        plan_premium_name:'プレミアムプラン',
+        plan_premium_name: 'プレミアムプラン',
+        plan_premium_price:'¥500',
         plan_per_month2:  ' / 月',
         plan_trial:       '🎁 初回30日間 無料トライアル',
         pf_unlimited:     '標本登録 無制限',
@@ -998,6 +1009,7 @@
         pf_photo10p:      '写真 <strong>10枚</strong> / 標本',
         pf_ai100p:        'AI自動識別 <strong>月100回</strong>（月初回復）',
         pf_backupp:       '<strong>クラウドバックアップ</strong>',
+        plan_note:        '※ 表示価格はご参考です。実際の金額はApp Store / Google Play上でご確認ください。',
 
         about_title:    'Mineria <strong>Labs</strong> について',
         about_p1:       'Mineria Labs は、鉱物標本コレクターの体験をよりリッチにすることを使命とする個人事業です。',
@@ -1046,9 +1058,10 @@
         plans_title:      'Simple<br /><strong>2 Plans</strong>',
         plans_desc:       'Start free, upgrade whenever you need more.',
         plan_free_name:   'Free Plan',
-        plan_per_month:   ' / mo',
+        plan_free_price:  'Free',
         plan_badge:       'Recommended',
-        plan_premium_name:'Premium Plan',
+        plan_premium_name: 'Premium Plan',
+        plan_premium_price:'$3.99',
         plan_per_month2:  ' / mo',
         plan_trial:       '🎁 First 30 days free trial',
         pf_unlimited:     'Unlimited specimens',
@@ -1061,6 +1074,7 @@
         pf_photo10p:      '<strong>10</strong> photos / specimen',
         pf_ai100p:        'AI identification <strong>100×/month</strong> (resets monthly)',
         pf_backupp:       '<strong>Cloud backup</strong>',
+        plan_note:        '* Prices shown are for reference only. Please check the App Store / Google Play for the actual price.',
 
         about_title:    'About Mineria <strong>Labs</strong>',
         about_p1:       'Mineria Labs is a sole proprietorship on a mission to enrich the experience of mineral specimen collectors.',
@@ -1109,9 +1123,10 @@
         plans_title:      '심플한<br /><strong>2가지 플랜</strong>',
         plans_desc:       '먼저 무료로 시작하고, 더 필요할 때 업그레이드하세요.',
         plan_free_name:   '무료 플랜',
-        plan_per_month:   ' / 월',
+        plan_free_price:  '무료',
         plan_badge:       '추천',
-        plan_premium_name:'프리미엄 플랜',
+        plan_premium_name: '프리미엄 플랜',
+        plan_premium_price:'₩5,500',
         plan_per_month2:  ' / 월',
         plan_trial:       '🎁 첫 30일 무료 체험',
         pf_unlimited:     '표본 등록 무제한',
@@ -1124,6 +1139,7 @@
         pf_photo10p:      '사진 <strong>10장</strong> / 표본',
         pf_ai100p:        'AI 자동 식별 <strong>월 100회</strong> (매월 초 초기화)',
         pf_backupp:       '<strong>클라우드 백업</strong>',
+        plan_note:        '※ 표시된 가격은 참고용입니다. 실제 금액은 App Store / Google Play에서 확인해 주세요.',
 
         about_title:    'Mineria <strong>Labs</strong> 소개',
         about_p1:       'Mineria Labs는 광물 표본 컬렉터의 경험을 더욱 풍부하게 만드는 것을 사명으로 하는 개인 사업체입니다.',
@@ -1172,9 +1188,10 @@
         plans_title:      '简单明了的<br /><strong>两种套餐</strong>',
         plans_desc:       '先免费开始，需要更多功能时再升级。',
         plan_free_name:   '免费套餐',
-        plan_per_month:   ' / 月',
+        plan_free_price:  '免费',
         plan_badge:       '推荐',
-        plan_premium_name:'高级套餐',
+        plan_premium_name: '高级套餐',
+        plan_premium_price:'¥28',
         plan_per_month2:  ' / 月',
         plan_trial:       '🎁 首次 30 天免费试用',
         pf_unlimited:     '标本注册无限',
@@ -1187,6 +1204,7 @@
         pf_photo10p:      '<strong>10 张</strong>照片 / 标本',
         pf_ai100p:        'AI 自动识别<strong>每月 100 次</strong>（月初重置）',
         pf_backupp:       '<strong>云端备份</strong>',
+        plan_note:        '※ 所示价格仅供参考。实际金额请在 App Store / Google Play 上确认。',
 
         about_title:    '关于 Mineria <strong>Labs</strong>',
         about_p1:       'Mineria Labs 是一家以丰富矿物标本收藏家体验为使命的个人企业。',
@@ -1235,9 +1253,10 @@
         plans_title:      '簡單明瞭的<br /><strong>兩種方案</strong>',
         plans_desc:       '先免費開始，需要更多功能時再升級。',
         plan_free_name:   '免費方案',
-        plan_per_month:   ' / 月',
+        plan_free_price:  '免費',
         plan_badge:       '推薦',
-        plan_premium_name:'進階方案',
+        plan_premium_name: '進階方案',
+        plan_premium_price:'NT$130',
         plan_per_month2:  ' / 月',
         plan_trial:       '🎁 首次 30 天免費試用',
         pf_unlimited:     '標本登錄無限',
@@ -1250,6 +1269,7 @@
         pf_photo10p:      '<strong>10 張</strong>照片 / 標本',
         pf_ai100p:        'AI 自動識別<strong>每月 100 次</strong>（月初重置）',
         pf_backupp:       '<strong>雲端備份</strong>',
+        plan_note:        '※ 所示價格僅供參考。實際金額請在 App Store / Google Play 上確認。',
 
         about_title:    '關於 Mineria <strong>Labs</strong>',
         about_p1:       'Mineria Labs 是一家以豐富礦物標本收藏家體驗為使命的個人企業。',

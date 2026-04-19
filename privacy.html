@@ -266,6 +266,15 @@
         <button class="lang-btn" data-lang="en" onclick="setLang('en')">
           <span class="flag">🇺🇸</span> EN
         </button>
+        <button class="lang-btn" data-lang="ko" onclick="setLang('ko')">
+          <span class="flag">🇰🇷</span> KO
+        </button>
+        <button class="lang-btn" data-lang="zh-CN" onclick="setLang('zh-CN')">
+          <span class="flag">🇨🇳</span> 简
+        </button>
+        <button class="lang-btn" data-lang="zh-TW" onclick="setLang('zh-TW')">
+          <span class="flag">🇹🇼</span> 繁
+        </button>
       </div>
     </div>
   </nav>
@@ -446,6 +455,257 @@
       </div>
     </div><!-- /#content-en -->
 
+    <!-- ── Korean Content ── -->
+    <div id="content-ko" style="display:none">
+      <div class="doc-header">
+        <p class="doc-label">Legal</p>
+        <h1>개인정보처리방침</h1>
+        <p class="doc-date">최종 업데이트: 2026년 4월 4일</p>
+      </div>
+
+      <p>
+        Mineria Labs（이하 「당사」）는 광물 표본 컬렉션 관리 앱 「Mineria」（이하 「본 앱」）에서의
+        이용자 개인정보 취급에 대해 아래와 같이 개인정보 처리방침（이하 「본 방침」）을 정합니다.
+      </p>
+
+      <h2>1. 수집하는 정보</h2>
+      <p>본 앱은 다음 정보를 수집할 수 있습니다.</p>
+      <ul>
+        <li>닉네임・이메일 주소（계정 등록 시）</li>
+        <li>프로필 이미지（임의）</li>
+        <li>표본 데이터（명칭・산지・사진 등 이용자가 입력한 정보）</li>
+        <li>이용 단말기 정보・OS 종류（크래시 분석 목적）</li>
+        <li>앱 이용 현황（AI 식별 이용 횟수 등）</li>
+      </ul>
+
+      <h2>2. 정보의 이용 목적</h2>
+      <ul>
+        <li>본 앱의 서비스 제공・기능 개선</li>
+        <li>이용자 지원 대응</li>
+        <li>AI 식별 기능의 이용 제한 관리</li>
+        <li>과금・구독 관리</li>
+        <li>부정 이용 방지</li>
+      </ul>
+
+      <h2>3. 제3자 제공</h2>
+      <p>당사는 다음의 경우를 제외하고 수집한 개인정보를 제3자에게 제공하지 않습니다.</p>
+      <ul>
+        <li>이용자의 동의가 있는 경우</li>
+        <li>법령에 따른 공개가 필요한 경우</li>
+        <li>서비스 제공에 필요한 업무 위탁처에의 제공（비밀유지 의무 부과）</li>
+      </ul>
+
+      <h2>4. 이용하는 외부 서비스</h2>
+      <p>본 앱은 다음의 외부 서비스를 이용합니다. 각 서비스의 개인정보 처리방침도 확인해 주세요.</p>
+      <ul>
+        <li>Firebase（Google LLC）— 인증・데이터베이스・스토리지</li>
+        <li>Cloudflare R2（Cloudflare, Inc.）— 미디어 파일 저장</li>
+        <li>Google Gemini API（Google LLC）— AI 식별 기능</li>
+      </ul>
+
+      <h2>5. 등록 정보의 보호</h2>
+      <p>
+        등록된 표본 정보（구매 가격・입수 정보・설명 메모 등）는 모두 본인만 열람할 수 있습니다.
+        제3자에게 전송・표시되지 않으며, 서버 측에서도 접근 제어를 실시하고 있습니다.
+        단, 이용자 본인이 SNS 등의 외부 서비스에서 공유한 내용은 본 조의 대상 외가 됩니다.
+      </p>
+
+      <h2>6. 데이터의 보관・삭제</h2>
+      <p>
+        이용자는 언제든지 계정을 삭제할 수 있습니다. 삭제 시에는 Firestore의 이용자 데이터 및
+        스토리지의 이미지 파일을 완전히 삭제합니다. 게스트（익명）계정은 앱을 제거하면 단말기의 데이터가 소실됩니다.
+      </p>
+
+      <h2>7. 보안</h2>
+      <p>
+        Firestore의 보안 규칙에 의해 자신의 데이터만 쓰기 가능한 설계로 되어 있습니다.
+        API 키 등의 기밀 정보는 코드에 포함하지 않고 Firebase Remote Config 등으로 관리하고 있습니다.
+      </p>
+
+      <h2>8. 아동의 개인정보 보호</h2>
+      <p>
+        본 앱은 13세 미만의 아동을 대상으로 하지 않습니다.
+        13세 미만의 아동으로부터 개인정보를 수집하고 있음이 판명된 경우 즉시 삭제합니다.
+      </p>
+
+      <h2>9. 방침의 변경</h2>
+      <p>
+        본 방침은 예고 없이 변경될 수 있습니다. 중요한 변경이 있는 경우 앱 내 공지 기능을 통해 안내합니다.
+      </p>
+
+      <h2>10. 문의</h2>
+      <p>개인정보에 관한 질문은 앱 내의 「문의하기」 폼을 통해 연락해 주세요.</p>
+      <div class="info-box">
+        <p>이메일：<a href="mailto:support@mineria-labs.com">support@mineria-labs.com</a></p>
+      </div>
+    </div><!-- /#content-ko -->
+
+    <!-- ── Simplified Chinese Content ── -->
+    <div id="content-zh-cn" style="display:none">
+      <div class="doc-header">
+        <p class="doc-label">Legal</p>
+        <h1>隐私政策</h1>
+        <p class="doc-date">最终更新日期：2026年4月4日</p>
+      </div>
+
+      <p>
+        Mineria Labs（以下简称"本公司"）就矿物标本收藏管理应用"Mineria"（以下简称"本应用"）
+        对用户个人信息的处理方式，制定以下隐私政策（以下简称"本政策"）。
+      </p>
+
+      <h2>1. 收集的信息</h2>
+      <p>本应用可能收集以下信息：</p>
+      <ul>
+        <li>昵称・电子邮件地址（注册账户时）</li>
+        <li>个人头像（可选）</li>
+        <li>标本数据（名称・产地・照片等用户输入的信息）</li>
+        <li>使用设备信息・OS类型（用于崩溃分析）</li>
+        <li>应用使用情况（AI识别使用次数等）</li>
+      </ul>
+
+      <h2>2. 信息使用目的</h2>
+      <ul>
+        <li>提供本应用服务・改善功能</li>
+        <li>响应用户支持请求</li>
+        <li>管理AI识别功能的使用限制</li>
+        <li>管理付费・订阅</li>
+        <li>防止不当使用</li>
+      </ul>
+
+      <h2>3. 向第三方提供</h2>
+      <p>除以下情况外，本公司不会向第三方提供收集的个人信息。</p>
+      <ul>
+        <li>经用户同意的情况</li>
+        <li>法律要求披露的情况</li>
+        <li>为提供服务向必要的业务委托方提供（附加保密义务）</li>
+      </ul>
+
+      <h2>4. 使用的外部服务</h2>
+      <p>本应用使用以下外部服务。请同时查阅各服务的隐私政策。</p>
+      <ul>
+        <li>Firebase（Google LLC）— 认证・数据库・存储</li>
+        <li>Cloudflare R2（Cloudflare, Inc.）— 媒体文件存储</li>
+        <li>Google Gemini API（Google LLC）— AI识别功能</li>
+      </ul>
+
+      <h2>5. 注册信息的保护</h2>
+      <p>
+        注册的标本信息（购买价格・入手信息・备注等）仅限本人查阅。不会向第三方发送或显示，
+        服务器端也实施了访问控制。但用户本人通过SNS等外部服务主动分享的内容不在本条范围内。
+      </p>
+
+      <h2>6. 数据存储・删除</h2>
+      <p>
+        用户可随时删除账户。删除时，Firestore中的用户数据及存储的图像文件将被完全删除。
+        访客（匿名）账户在卸载应用时设备上的数据将丢失。
+      </p>
+
+      <h2>7. 安全</h2>
+      <p>
+        Firestore的安全规则确保只有本人才能写入自己的数据。API密钥等机密信息不包含在代码中，
+        通过Firebase Remote Config等进行管理。
+      </p>
+
+      <h2>8. 儿童隐私</h2>
+      <p>
+        本应用不面向13岁以下儿童。如发现收集了13岁以下儿童的个人信息，将立即删除。
+      </p>
+
+      <h2>9. 政策变更</h2>
+      <p>
+        本政策可能在不预先通知的情况下发生变更。如有重要变更，将通过应用内公告功能通知。
+      </p>
+
+      <h2>10. 联系我们</h2>
+      <p>如有隐私相关问题，请通过应用内的"联系我们"表单联系我们。</p>
+      <div class="info-box">
+        <p>邮箱：<a href="mailto:support@mineria-labs.com">support@mineria-labs.com</a></p>
+      </div>
+    </div><!-- /#content-zh-cn -->
+
+    <!-- ── Traditional Chinese Content ── -->
+    <div id="content-zh-tw" style="display:none">
+      <div class="doc-header">
+        <p class="doc-label">Legal</p>
+        <h1>隱私權政策</h1>
+        <p class="doc-date">最終更新日期：2026年4月4日</p>
+      </div>
+
+      <p>
+        Mineria Labs（以下簡稱「本公司」）就礦物標本收藏管理應用程式「Mineria」（以下簡稱「本應用」）
+        對使用者個人資料的處理方式，制定以下隱私權政策（以下簡稱「本政策」）。
+      </p>
+
+      <h2>1. 收集的資訊</h2>
+      <p>本應用可能收集以下資訊：</p>
+      <ul>
+        <li>暱稱・電子郵件地址（註冊帳號時）</li>
+        <li>個人頭像（選填）</li>
+        <li>標本資料（名稱・產地・照片等使用者輸入的資訊）</li>
+        <li>使用裝置資訊・OS類型（用於崩潰分析）</li>
+        <li>應用使用情況（AI識別使用次數等）</li>
+      </ul>
+
+      <h2>2. 資訊使用目的</h2>
+      <ul>
+        <li>提供本應用服務・改善功能</li>
+        <li>回應使用者支援請求</li>
+        <li>管理AI識別功能的使用限制</li>
+        <li>管理付費・訂閱</li>
+        <li>防止不當使用</li>
+      </ul>
+
+      <h2>3. 向第三方提供</h2>
+      <p>除以下情況外，本公司不會向第三方提供收集的個人資料。</p>
+      <ul>
+        <li>經使用者同意的情況</li>
+        <li>法律要求揭露的情況</li>
+        <li>為提供服務向必要的業務委託方提供（附加保密義務）</li>
+      </ul>
+
+      <h2>4. 使用的外部服務</h2>
+      <p>本應用使用以下外部服務。請同時查閱各服務的隱私權政策。</p>
+      <ul>
+        <li>Firebase（Google LLC）— 認證・資料庫・儲存</li>
+        <li>Cloudflare R2（Cloudflare, Inc.）— 媒體檔案儲存</li>
+        <li>Google Gemini API（Google LLC）— AI識別功能</li>
+      </ul>
+
+      <h2>5. 已登錄資訊的保護</h2>
+      <p>
+        已登錄的標本資訊（購買價格・入手資訊・備忘錄等）僅限本人查閱。不會向第三方傳送或顯示，
+        伺服器端也實施了存取控制。但使用者本人透過SNS等外部服務主動分享的內容不在本條範圍內。
+      </p>
+
+      <h2>6. 資料的保存・刪除</h2>
+      <p>
+        使用者可隨時刪除帳號。刪除時，Firestore中的使用者資料及儲存的圖像檔案將被完全刪除。
+        訪客（匿名）帳號在解除安裝應用程式時裝置上的資料將遺失。
+      </p>
+
+      <h2>7. 安全性</h2>
+      <p>
+        Firestore的安全規則確保只有本人才能寫入自己的資料。API金鑰等機密資訊不包含在程式碼中，
+        透過Firebase Remote Config等進行管理。
+      </p>
+
+      <h2>8. 兒童隱私</h2>
+      <p>
+        本應用不面向13歲以下兒童。如發現收集了13歲以下兒童的個人資料，將立即刪除。
+      </p>
+
+      <h2>9. 政策變更</h2>
+      <p>
+        本政策可能在不事先通知的情況下發生變更。如有重要變更，將透過應用內公告功能通知。
+      </p>
+
+      <h2>10. 聯絡我們</h2>
+      <p>如有隱私相關問題，請透過應用內的「聯絡我們」表單聯絡我們。</p>
+      <div class="info-box">
+        <p>電子郵件：<a href="mailto:support@mineria-labs.com">support@mineria-labs.com</a></p>
+      </div>
+    </div><!-- /#content-zh-tw -->
+
   </main>
 
   <footer>
@@ -460,18 +720,31 @@
 
   <script>
     const footerLabels = {
-      ja: { back: '← トップに戻る', top: 'トップ', privacy: 'プライバシーポリシー', terms: '利用規約', contact: 'お問い合わせ' },
-      en: { back: '← Back to Top',  top: 'Home',  privacy: 'Privacy Policy',      terms: 'Terms of Service', contact: 'Contact' },
+      ja:      { back: '← トップに戻る',    top: 'トップ', privacy: 'プライバシーポリシー', terms: '利用規約',    contact: 'お問い合わせ' },
+      en:      { back: '← Back to Top',     top: 'Home',   privacy: 'Privacy Policy',       terms: 'Terms of Service', contact: 'Contact' },
+      ko:      { back: '← 홈으로 돌아가기', top: '홈',     privacy: '개인정보처리방침',     terms: '이용약관',    contact: '문의하기' },
+      'zh-CN': { back: '← 返回首页',        top: '首页',   privacy: '隐私政策',             terms: '服务条款',    contact: '联系我们' },
+      'zh-TW': { back: '← 返回首頁',        top: '首頁',   privacy: '隱私政策',             terms: '服務條款',    contact: '聯絡我們' },
+    };
+
+    const contentIds = { ja: 'content-ja', en: 'content-en', ko: 'content-ko', 'zh-CN': 'content-zh-cn', 'zh-TW': 'content-zh-tw' };
+    const htmlLangs  = { ja: 'ja', en: 'en', ko: 'ko', 'zh-CN': 'zh-Hans', 'zh-TW': 'zh-Hant' };
+    const pageTitles = {
+      ja:      'プライバシーポリシー — Mineria',
+      en:      'Privacy Policy — Mineria',
+      ko:      '개인정보처리방침 — Mineria',
+      'zh-CN': '隐私政策 — Mineria',
+      'zh-TW': '隱私政策 — Mineria',
     };
 
     function setLang(lang) {
-      const isEn = lang === 'en';
-      document.getElementById('content-ja').style.display = isEn ? 'none' : '';
-      document.getElementById('content-en').style.display = isEn ? '' : 'none';
-      document.documentElement.lang = lang;
-      document.title = isEn ? 'Privacy Policy — Mineria' : 'プライバシーポリシー — Mineria';
+      Object.keys(contentIds).forEach(l => {
+        document.getElementById(contentIds[l]).style.display = l === lang ? '' : 'none';
+      });
+      document.documentElement.lang = htmlLangs[lang] || lang;
+      document.title = pageTitles[lang] || pageTitles.ja;
 
-      const lb = footerLabels[lang];
+      const lb = footerLabels[lang] || footerLabels.ja;
       document.getElementById('nav-back-link').textContent  = lb.back;
       document.getElementById('footer-top').textContent     = lb.top;
       document.getElementById('footer-privacy').textContent = lb.privacy;
