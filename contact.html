@@ -340,6 +340,15 @@
         <button class="lang-btn" data-lang="en" onclick="setLang('en')">
           <span class="flag">🇺🇸</span> EN
         </button>
+        <button class="lang-btn" data-lang="ko" onclick="setLang('ko')">
+          <span class="flag">🇰🇷</span> KO
+        </button>
+        <button class="lang-btn" data-lang="zh-CN" onclick="setLang('zh-CN')">
+          <span class="flag">🇨🇳</span> 简
+        </button>
+        <button class="lang-btn" data-lang="zh-TW" onclick="setLang('zh-TW')">
+          <span class="flag">🇹🇼</span> 繁
+        </button>
       </div>
     </div>
   </nav>
@@ -515,11 +524,104 @@
         footerTerms:  'Terms of Service',
         footerContact:'Contact',
       },
+
+      ko: {
+        title:        '문의하기 — Mineria',
+        back:         '← 홈으로 돌아가기',
+        pageTitle:    '문의하기',
+        pageDesc:     '질문, 버그 신고, 기능 요청, 법인 제휴 등 편하게 문의해 주세요.\n통상 2~3 영업일 이내에 답변드립니다.',
+        labelName:    '이름',
+        req:          ' (필수)',
+        namePh:       '홍길동',
+        labelEmail:   '이메일 주소',
+        labelCategory:'문의 유형',
+        optPh:        '선택하세요',
+        optBug:       '버그 / 오류 신고',
+        optFeature:   '기능 요청',
+        optAccount:   '계정 / 결제 문의',
+        optPress:     '언론 / 미디어',
+        optBusiness:  '비즈니스 파트너십',
+        optOther:     '기타',
+        labelMessage: '문의 내용',
+        messagePh:    '문의 내용을 입력해 주세요',
+        submitBtn:    '보내기',
+        submitLoading:'전송 중…',
+        alertSuccess: '✓ 메시지가 전송되었습니다. 2~3 영업일 이내에 답변드립니다.',
+        alertError:   '✗ 전송에 실패했습니다. 잠시 후 다시 시도하시거나 support@mineria-labs.com으로 직접 연락해 주세요.',
+        formNote:     '또는 직접 이메일로 연락해 주세요:',
+        footerTop:    '홈',
+        footerPrivacy:'개인정보처리방침',
+        footerTerms:  '이용약관',
+        footerContact:'문의하기',
+      },
+
+      'zh-CN': {
+        title:        '联系我们 — Mineria',
+        back:         '← 返回首页',
+        pageTitle:    '联系我们',
+        pageDesc:     '欢迎就问题、错误报告、功能请求或商务合作等随时联系我们。\n通常在 2～3 个工作日内回复。',
+        labelName:    '姓名',
+        req:          '（必填）',
+        namePh:       '张三',
+        labelEmail:   '电子邮件地址',
+        labelCategory:'咨询类型',
+        optPh:        '请选择',
+        optBug:       '错误 / 问题报告',
+        optFeature:   '功能请求',
+        optAccount:   '账户 / 付费咨询',
+        optPress:     '媒体 / 采访',
+        optBusiness:  '商务合作',
+        optOther:     '其他',
+        labelMessage: '咨询内容',
+        messagePh:    '请描述您的咨询内容',
+        submitBtn:    '发送',
+        submitLoading:'发送中…',
+        alertSuccess: '✓ 消息已发送。我们将在 2～3 个工作日内回复。',
+        alertError:   '✗ 发送失败。请稍后重试，或直接发邮件至 support@mineria-labs.com。',
+        formNote:     '或直接发送电子邮件至：',
+        footerTop:    '首页',
+        footerPrivacy:'隐私政策',
+        footerTerms:  '服务条款',
+        footerContact:'联系我们',
+      },
+
+      'zh-TW': {
+        title:        '聯絡我們 — Mineria',
+        back:         '← 返回首頁',
+        pageTitle:    '聯絡我們',
+        pageDesc:     '歡迎就問題、錯誤回報、功能請求或商務合作等隨時聯絡我們。\n通常在 2～3 個工作天內回覆。',
+        labelName:    '姓名',
+        req:          '（必填）',
+        namePh:       '王小明',
+        labelEmail:   '電子郵件地址',
+        labelCategory:'諮詢類型',
+        optPh:        '請選擇',
+        optBug:       '錯誤 / 問題回報',
+        optFeature:   '功能請求',
+        optAccount:   '帳號 / 付費諮詢',
+        optPress:     '媒體 / 採訪',
+        optBusiness:  '商務合作',
+        optOther:     '其他',
+        labelMessage: '諮詢內容',
+        messagePh:    '請描述您的諮詢內容',
+        submitBtn:    '傳送',
+        submitLoading:'傳送中…',
+        alertSuccess: '✓ 訊息已傳送。我們將在 2～3 個工作天內回覆。',
+        alertError:   '✗ 傳送失敗。請稍後再試，或直接發電子郵件至 support@mineria-labs.com。',
+        formNote:     '或直接發送電子郵件至：',
+        footerTop:    '首頁',
+        footerPrivacy:'隱私政策',
+        footerTerms:  '服務條款',
+        footerContact:'聯絡我們',
+      },
     };
+
+    const htmlLangs = { ja: 'ja', en: 'en', ko: 'ko', 'zh-CN': 'zh-Hans', 'zh-TW': 'zh-Hant' };
 
     function setLang(lang) {
       const t = i18n[lang];
-      document.documentElement.lang = lang;
+      if (!t) return;
+      document.documentElement.lang = htmlLangs[lang] || lang;
       document.title = t.title;
 
       document.getElementById('nav-back-link').textContent   = t.back;
